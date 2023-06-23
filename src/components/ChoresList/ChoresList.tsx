@@ -10,9 +10,17 @@ export const ChoreList = () => {
     // TODO Fix the key!! 
     return (
         <section>
-            <ul>
-                {chores.map((chore: any, index: number) => <ChoreItem key={index} {...chore} calculateProgress={calculateProgress} />)}
-            </ul>
+            {chores
+                ?
+                <ul>
+                    {chores.map((chore: any, index: number) => <ChoreItem key={index} {...chore} calculateProgress={calculateProgress} />)}
+                </ul>
+                :
+                <p>
+                    No chores.
+                </p>
+            }
+
         </section>
     );
 };

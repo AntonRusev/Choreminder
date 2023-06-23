@@ -25,7 +25,6 @@ export const ChoreItem = ({
             <div>
                 <label htmlFor="chore">{name}-{hoursRemaining}</label>
                 <progress id="chore" value={percent} max="100"></progress>
-                <span>{days * 24}</span>
             </div>
         </li>
     );

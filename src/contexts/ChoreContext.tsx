@@ -8,6 +8,7 @@ export const ChoreProvider = ({
     const [chores, setChores] = useState([{}]);
     const [formValues, setFormValues] = useState({} as any);
 
+
     // On filling the input fields - name, days, img
 
     function formValueChangeHandler(e: any) {
@@ -18,7 +19,6 @@ export const ChoreProvider = ({
 
     const onChoreCreate = (e: any) => {
         e.preventDefault();
-        setFormValues({});
 
         const startDate: String = new Date().toString();
 
@@ -29,9 +29,10 @@ export const ChoreProvider = ({
         const newChore: {} = { ...formValues, startDate, hoursRemaining, percent };
 
         setChores([...chores, newChore]);
+        setFormValues({});
     };
 
-    // Setting up the ChoreItem timer
+    // Calculating remaining hours till the chore
 
     const setChoreTimer = (daysInput: number, startingTime: any) => {
         const hours: number = Number(daysInput) * 24;
