@@ -6,9 +6,9 @@ export const ChoreProvider = ({
     children,
 }: any) => {
     const [chores, setChores] = useState([{}]);
-    const [formValues, setFormValues] = useState({});
+    const [formValues, setFormValues] = useState({} as any);
 
-    // On filling the input fields
+    // On filling the input fields - name, days, img
 
     function formValueChangeHandler(e: any) {
         setFormValues({ ...formValues, [e.target.name]: e.target.value });
@@ -18,10 +18,15 @@ export const ChoreProvider = ({
 
     const onChoreCreate = (e: any) => {
         e.preventDefault();
+        setFormValues({});
 
         const startDate: String = new Date().toString();
 
-        const newChore: {} = { ...formValues, startDate }
+        const hoursRemaining: number = setChoreTimer(formValues.days, startDate);
+
+        const percent: number = calculateProgress(formValues.days, hoursRemaining);
+
+        const newChore: {} = { ...formValues, startDate, hoursRemaining, percent };
 
         setChores([...chores, newChore]);
     };
@@ -49,10 +54,19 @@ export const ChoreProvider = ({
         );
     };
 
+    // Calculating Progress % 
+
+    const calculateProgress = (setTime: any, remainingTime: any) => {
+        const end: number = Number(setTime * 24);
+        const percent = 100 - (remainingTime / (end * 100));
+        return percent;
+    };
+
     const choreContextValue: {} = {
         formValueChangeHandler,
         onChoreCreate,
         setChoreTimer,
+        calculateProgress,
         chores
     };
 

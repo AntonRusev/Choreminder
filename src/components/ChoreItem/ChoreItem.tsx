@@ -1,37 +1,32 @@
-import { useContext, useEffect, useState } from "react";
-
-import { ChoreContext } from "../../contexts/ChoreContext";
-
 export const ChoreItem = ({
     name,
-    time,
+    days,
     img,
     startDate,
+    hoursRemaining,
+    percent
 }: {
     name: string,
-    time: number,
+    days: number,
     img: string,
     startDate: any,
+    hoursRemaining: number,
+    percent: number
 }) => {
-    const [hoursRemaining, setHoursRemaining] = useState(0);
-    const { setChoreTimer } = useContext(ChoreContext);
-
-    useEffect(() => {
-        if (startDate) {
-            const hours: number = setChoreTimer(time, startDate)
-            setHoursRemaining(hours);
-        };
-    }, [startDate]);
-
     return (
         <li>
             <article>
                 <p>Name: {name}</p>
                 <p>IMG: {img}</p>
-                <p>Repeat Time: {time}</p>
+                <p>Repeat Time: {days} days</p>
                 <p>Start Date: : {startDate}</p>
                 <p>Hours Remaining: {hoursRemaining} </p>
             </article>
+            <div>
+                <label htmlFor="chore">{name}-{hoursRemaining}</label>
+                <progress id="chore" value={percent} max="100"></progress>
+                <span>{days * 24}</span>
+            </div>
         </li>
     );
 };
