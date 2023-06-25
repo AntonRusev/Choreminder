@@ -1,4 +1,7 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import * as choreService from '../services/choreService';
 
 export const ChoreContext = createContext({} as any);
 
@@ -7,6 +10,14 @@ export const ChoreProvider = ({
 }: any) => {
     const [chores, setChores] = useState([{}]);
     const [formValues, setFormValues] = useState({} as any);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        choreService.getAll()
+        .then(result => setChores(result))
+        .catch(error => console.log(error));
+    }, []);
 
 
     // On filling the input fields - name, days, img
@@ -17,7 +28,7 @@ export const ChoreProvider = ({
 
     // On sending FORM input data
 
-    const onChoreCreate = (e: any) => {
+    const onChoreCreate = async (e: any) => {
         e.preventDefault();
 
         const startDate: String = new Date().toString();
@@ -26,10 +37,14 @@ export const ChoreProvider = ({
 
         const percent: number = calculateProgress(formValues.days, hoursRemaining);
 
-        const newChore: {} = { ...formValues, startDate, hoursRemaining, percent };
+        const data: {} = { ...formValues, startDate, hoursRemaining, percent };
+
+        const newChore = await choreService.create(data)
 
         setChores([...chores, newChore]);
         setFormValues({});
+        
+        navigate('/');
     };
 
     // Calculating remaining hours till the chore
