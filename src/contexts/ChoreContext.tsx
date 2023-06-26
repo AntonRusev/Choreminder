@@ -33,11 +33,11 @@ export const ChoreProvider = ({
 
         const startDate: String = new Date().toString();
 
-        const hoursRemaining: number = setChoreTimer(formValues.days, startDate);
+        // const hoursRemaining: number = setChoreTimer(formValues.days, startDate);
 
-        const percent: number = calculateProgress(formValues.days, hoursRemaining);
+        // const percent: number = calculateProgress(formValues.days, hoursRemaining);
 
-        const data: {} = { ...formValues, startDate, hoursRemaining, percent };
+        const data: {} = { ...formValues, startDate };
 
         const newChore = await choreService.create(data)
 
@@ -49,40 +49,38 @@ export const ChoreProvider = ({
 
     // Calculating remaining hours till the chore
 
-    const setChoreTimer = (daysInput: number, startingTime: any) => {
-        const hours: number = Number(daysInput) * 24;
+    // const setChoreTimer = (daysInput: number, startingTime: any) => {
+    //     const hours: number = Number(daysInput) * 24;
 
-        startingTime = new Date(startingTime);
+    //     startingTime = new Date(startingTime);
 
-        const currentTime = new Date();
+    //     const currentTime = new Date();
 
-        // TODO Check if the hoursRemaining are not more than the base hours!!!
-        const hoursRemaining: number = hours - hoursCalculator(startingTime, currentTime);
+    //     // TODO Check if the hoursRemaining are not more than the base hours!!!
+    //     const hoursRemaining: number = hours - hoursCalculator(startingTime, currentTime);
 
-        return hoursRemaining;
-    };
+    //     return hoursRemaining;
+    // };
 
-    const hoursCalculator = (startingTime: any, currentTime: any) => {
-        return Math.round(
-            Math.abs(
-                (startingTime.getTime() - currentTime.getTime()) / (1000 * 3600)
-            )
-        );
-    };
+    // const hoursCalculator = (startingTime: any, currentTime: any) => {
+    //     return Math.round(
+    //         Math.abs(
+    //             (startingTime.getTime() - currentTime.getTime()) / (1000 * 3600)
+    //         )
+    //     );
+    // };
 
     // Calculating Progress % 
 
-    const calculateProgress = (setTime: any, remainingTime: any) => {
-        const end: number = Number(setTime * 24);
-        const percent = 100 - (remainingTime / (end * 100));
-        return percent;
-    };
+    // const calculateProgress = (setTime: any, remainingTime: any) => {
+    //     const end: number = Number(setTime * 24);
+    //     const percent = 100 - (remainingTime / (end * 100));
+    //     return percent;
+    // };
 
     const choreContextValue: {} = {
         formValueChangeHandler,
         onChoreCreate,
-        setChoreTimer,
-        calculateProgress,
         chores
     };
 

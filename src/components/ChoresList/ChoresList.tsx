@@ -5,7 +5,7 @@ import { ChoreContext } from '../../contexts/ChoreContext';
 import { ChoreItem } from '../ChoreItem/ChoreItem';
 
 export const ChoreList = () => {
-    const { chores, calculateProgress } = useContext(ChoreContext);
+    const { chores } = useContext(ChoreContext);
 
     // TODO Fix the key!! 
     return (
@@ -13,7 +13,7 @@ export const ChoreList = () => {
             {chores
                 ?
                 <ul>
-                    {chores.map((chore: any, index: number) => <ChoreItem key={index} {...chore} calculateProgress={calculateProgress} />)}
+                    {chores.map((chore: any, index: number) => <ChoreItem key={index} {...chore} />)}
                 </ul>
                 :
                 <p>
