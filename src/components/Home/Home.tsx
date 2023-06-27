@@ -1,12 +1,25 @@
+import { useContext } from "react";
+
 import { ChoreList } from "../ChoresList/ChoresList";
 import { CreateChore } from "../CreateChore/CreateChore";
 
+import { AuthContext } from '../../contexts/AuthContext';
+
 export const Home = () => {
+    const { auth } = useContext(AuthContext);
+
     return (
         <main>
-            <p>This will serve as both catalog for existing chores, if the user is logged in, and landing page with login and register links, for guest users</p>
-            <ChoreList />
-            <CreateChore />
+            {auth._id
+                ?
+                <>
+                    <ChoreList />
+                    <CreateChore />
+                </>
+                :
+                <p> Login and Regiser </p>
+            }
+
         </main>
     );
 };

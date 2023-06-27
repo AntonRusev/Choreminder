@@ -29,19 +29,17 @@ export const useProgress = (days: number, startDate: any) => {
         // TODO Check if the hoursRemaining are not more than the base hours!!!
         let hoursRemaining: number = hours - hoursCalculator(startingTime, currentTime);
 
-        if (hoursRemaining > hours) {
-            hoursRemaining %= hours;
+        if (hoursRemaining < 0) {
+            hoursRemaining = 0;
         };
 
         return hoursRemaining;
     };
 
     const hoursCalculator = (startingTime: any, currentTime: any) => {
-        return Math.round(
-            Math.abs(
-                (startingTime.getTime() - currentTime.getTime()) / (1000 * 3600)
-            )
-        );
+        let result: number = Math.round((currentTime.getTime() - startingTime.getTime()) / (1000 * 3600));
+
+        return result;
     };
 
     // Calculating Progress % 

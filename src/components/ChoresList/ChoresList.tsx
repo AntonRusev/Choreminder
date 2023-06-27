@@ -4,6 +4,8 @@ import { ChoreContext } from '../../contexts/ChoreContext';
 
 import { ChoreItem } from '../ChoreItem/ChoreItem';
 
+import * as css from './ChoresList.module.scss';
+
 export const ChoreList = () => {
     const { chores } = useContext(ChoreContext);
 
@@ -12,7 +14,7 @@ export const ChoreList = () => {
         <section>
             {chores
                 ?
-                <ul>
+                <ul className={css.list}>
                     {chores.map((chore: any, index: number) => <ChoreItem key={index} {...chore} />)}
                 </ul>
                 :

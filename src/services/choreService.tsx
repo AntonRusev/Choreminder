@@ -2,8 +2,8 @@ import * as request from './requester';
 
 const baseUrl = 'http://localhost:3030/data/chores';
 
-export const getAll = async () => {
-    const chores = await request.get(baseUrl, {});
+export const getAll = async (ownerId: string) => {
+    const chores = await request.get(`${baseUrl}?where=_ownerId%3D%22${ownerId}%22`, {});
 
     return chores;
 };

@@ -26,6 +26,10 @@ export const request = async (method: string, url: string, data: {}) => {
         const response = await fetch(url, options);
 
         if (response.ok !== true) {
+            if (response.status === 403) {
+                // sessionStorage.removeItem('userData'); 
+            };
+
             const error = await response.json();
 
             throw new Error(error.message);

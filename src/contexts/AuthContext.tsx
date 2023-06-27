@@ -68,7 +68,8 @@ export const AuthProvider = ({
     const authContextValue: {} = {
         authFormValueChangeHandler,
         onAuthSubmit,
-        onLogout
+        onLogout,
+        auth
     };
 
     return (

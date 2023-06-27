@@ -1,6 +1,7 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { AuthContext } from '../contexts/AuthContext';
 import * as choreService from '../services/choreService';
 
 export const ChoreContext = createContext({} as any);
@@ -11,13 +12,17 @@ export const ChoreProvider = ({
     const [chores, setChores] = useState([{}]);
     const [formValues, setFormValues] = useState({} as any);
 
+    const { auth } = useContext(AuthContext);
+
     const navigate = useNavigate();
 
     useEffect(() => {
-        choreService.getAll()
-        .then(result => setChores(result))
-        .catch(error => console.log(error));
-    }, []);
+        if (auth._id) {
+            choreService.getAll(auth._id)
+                .then(result => setChores(result))
+                .catch(error => console.log(error));
+        };
+    }, [auth]);
 
 
     // On filling the input fields - name, days, img
@@ -31,52 +36,18 @@ export const ChoreProvider = ({
     const onChoreCreate = async (e: any) => {
         e.preventDefault();
 
-        const startDate: String = new Date().toString();
+        const startDate: string = new Date().toString();
+        const isActive: boolean = true;
 
-        // const hoursRemaining: number = setChoreTimer(formValues.days, startDate);
-
-        // const percent: number = calculateProgress(formValues.days, hoursRemaining);
-
-        const data: {} = { ...formValues, startDate };
+        const data: {} = { ...formValues, startDate, isActive };
 
         const newChore = await choreService.create(data)
 
         setChores([...chores, newChore]);
         setFormValues({});
-        
+
         navigate('/');
     };
-
-    // Calculating remaining hours till the chore
-
-    // const setChoreTimer = (daysInput: number, startingTime: any) => {
-    //     const hours: number = Number(daysInput) * 24;
-
-    //     startingTime = new Date(startingTime);
-
-    //     const currentTime = new Date();
-
-    //     // TODO Check if the hoursRemaining are not more than the base hours!!!
-    //     const hoursRemaining: number = hours - hoursCalculator(startingTime, currentTime);
-
-    //     return hoursRemaining;
-    // };
-
-    // const hoursCalculator = (startingTime: any, currentTime: any) => {
-    //     return Math.round(
-    //         Math.abs(
-    //             (startingTime.getTime() - currentTime.getTime()) / (1000 * 3600)
-    //         )
-    //     );
-    // };
-
-    // Calculating Progress % 
-
-    // const calculateProgress = (setTime: any, remainingTime: any) => {
-    //     const end: number = Number(setTime * 24);
-    //     const percent = 100 - (remainingTime / (end * 100));
-    //     return percent;
-    // };
 
     const choreContextValue: {} = {
         formValueChangeHandler,
