@@ -49,10 +49,34 @@ export const ChoreProvider = ({
         navigate('/');
     };
 
+        // Editing a Chore(Reseting the timer or turning it inactive)
+
+        const onEdit = async ( choreId: string, data: any) => {
+            const startDate: string = new Date().toString();
+    
+            const result = await choreService.edit(choreId, {...data, startDate});
+    
+            setChores(state => state.map((x: any) => x._id === data._id ? result : x));
+    
+            navigate('/');
+        };
+
+        // Deleting a Chore
+
+        const onDelete = async (choreId: string) => {
+            await choreService.remove(choreId);
+    
+            setChores(state => state.filter((x: any) => x._id !== choreId));
+    
+            navigate('/');
+        };
+
     const choreContextValue: {} = {
         formValueChangeHandler,
         onChoreCreate,
-        chores
+        onEdit,
+        onDelete,
+        chores,
     };
 
     return (

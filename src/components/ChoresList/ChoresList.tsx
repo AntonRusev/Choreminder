@@ -7,7 +7,7 @@ import { ChoreItem } from '../ChoreItem/ChoreItem';
 import * as css from './ChoresList.module.scss';
 
 export const ChoreList = () => {
-    const { chores } = useContext(ChoreContext);
+    const { chores, onEdit, onDelete } = useContext(ChoreContext);
 
     // TODO Fix the key!! 
     return (
@@ -15,7 +15,7 @@ export const ChoreList = () => {
             {chores
                 ?
                 <ul className={css.list}>
-                    {chores.map((chore: any, index: number) => <ChoreItem key={index} {...chore} />)}
+                    {chores.map((chore: any, index: number) => <ChoreItem key={index} {...chore} onEdit={onEdit} onDelete={onDelete} />)}
                 </ul>
                 :
                 <p>

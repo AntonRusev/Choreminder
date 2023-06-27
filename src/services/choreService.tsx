@@ -14,6 +14,12 @@ export const create = async (choreData: {}) => {
     return result;
 };
 
+export const edit = async (choreId: string, data: {}) => {
+    const result = await request.put(`${baseUrl}/${choreId}`, data);
+
+    return result;
+};
+
 export const remove = async (choreId: string) => {
     const result = await request.del(`${baseUrl}/${choreId}`, {});
 
