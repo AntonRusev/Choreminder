@@ -14,22 +14,28 @@ export const AuthProvider = ({
 
     const navigate = useNavigate();
 
+    // Checking if there is logged in User
+
     useEffect(() => {
-        if(auth.accessToken) {
+        if (auth.accessToken) {
             localStorage.setItem('userData', JSON.stringify(auth));
-            
+
         } else {
             const userData = JSON.parse(localStorage.getItem('userData') as string);
 
-            if(userData) {
+            if (userData) {
                 setAuth(userData);
             };
         };
-    },[auth, auth.accessToken]);
+    }, [auth, auth.accessToken]);
+
+    // On filling the input fields - email, password and rePass
 
     function authFormValueChangeHandler(e: any) {
         setAuthFormValues({ ...authFormValues, [e.target.name]: e.target.value });
     };
+
+    // On clicking Login or Register
 
     const onAuthSubmit = async (e: any) => {
         e.preventDefault();
@@ -54,6 +60,8 @@ export const AuthProvider = ({
             throw new Error(err);
         };
     };
+
+    // On clicking Logout
 
     const onLogout = async () => {
         await authService.logout();
