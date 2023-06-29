@@ -10,7 +10,6 @@ export const AuthProvider = ({
     children,
 }: any) => {
     const [auth, setAuth] = useState({} as any);
-    const [authFormValues, setAuthFormValues] = useState({} as any);
 
     const navigate = useNavigate();
 
@@ -29,22 +28,16 @@ export const AuthProvider = ({
         };
     }, [auth, auth.accessToken]);
 
-    // On filling the input fields - email, password and rePass
-
-    function authFormValueChangeHandler(e: any) {
-        setAuthFormValues({ ...authFormValues, [e.target.name]: e.target.value });
-    };
-
     // On clicking Login or Register
 
-    const onAuthSubmit = async (e: any) => {
+    const onAuthSubmit = async (e: any, formValues: any) => {
         e.preventDefault();
 
         let result: {} = {};
 
-        const { rePass, ...values } = authFormValues;
+        const { rePass, ...values } = formValues;
 
-        const inputFields: number = Object.keys(authFormValues).length;
+        const inputFields: number = Object.keys(formValues).length;
 
         try {
             if (inputFields > 2) {
@@ -74,7 +67,6 @@ export const AuthProvider = ({
     };
 
     const authContextValue: {} = {
-        authFormValueChangeHandler,
         onAuthSubmit,
         onLogout,
         auth

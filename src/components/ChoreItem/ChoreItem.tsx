@@ -1,7 +1,8 @@
 import { useContext } from "react";
 
-import { useProgress } from "../../hooks/useProgress";
 import { ConfirmContext } from "../../contexts/ConfirmContext";
+
+import { useProgress } from "../../hooks/useProgress";
 
 import * as css from './ChoreItem.module.scss';
 
@@ -20,9 +21,10 @@ export const ChoreItem = ({
     startDate: any,
     isActive: boolean,
 }) => {
+    const { onActivateConfirm } = useContext(ConfirmContext);
+
     const { hoursRemaining, progress } = useProgress(days, startDate);
 
-    const { onActivateConfirm } = useContext(ConfirmContext);
 
     return (
         <li className={css.chore}>
@@ -42,15 +44,15 @@ export const ChoreItem = ({
                         <label htmlFor="chore">{name}: </label>
                         <progress id="chore" className={css.progressbar} value={hoursRemaining} max={days * 24}></progress>
 
-                        <button onClick={() => onActivateConfirm({action:"reset", _id, name, img, days, isActive })}>Reset</button>
-                        <button onClick={() => onActivateConfirm({ action:"stop", _id, name, img, days, isActive: false })}>Stop</button>
-                        <button onClick={() => onActivateConfirm({action:"delete", _id,})}>Delete</button>
+                        <button onClick={() => onActivateConfirm({ action: "reset", _id, name, img, days, isActive })}>Reset</button>
+                        <button onClick={() => onActivateConfirm({ action: "stop", _id, name, img, days, isActive: false })}>Stop</button>
+                        <button onClick={() => onActivateConfirm({ action: "delete", _id, })}>Delete</button>
                     </div>
                 </>
                 :
                 <>
                     <p>The "{name}" chore is not active.</p>
-                    <button onClick={() => onActivateConfirm({action:"activate", _id, name, img, days, isActive: true })}>Activate</button>
+                    <button onClick={() => onActivateConfirm({ action: "activate", _id, name, img, days, isActive: true })}>Activate</button>
                 </>
             }
         </li>

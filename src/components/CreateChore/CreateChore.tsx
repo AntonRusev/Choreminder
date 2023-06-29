@@ -17,7 +17,7 @@ export const CreateChore = () => {
 
                 {/* Chore cycle timer */}
                 <div>
-                    <label htmlFor="time">Days:</label>
+                    <label htmlFor="days">Days:</label>
                     <input type="number" id="days" name="days" onChange={formValueChangeHandler} />
                 </div>
 

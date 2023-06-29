@@ -33,20 +33,23 @@ export const ConfirmProvider = ({
     // On confirming the action
     const onConfirm = () => {
         if (confirmData.action === 'delete') {
+
             // Removing the chore
-
             onDelete(confirmData._id);
+
         } else if (confirmData.action === 'reset') {
+
             // Reseting the timer of the chore
-
             onEdit(confirmData._id, confirmData);
+
         } else if (confirmData.action === 'stop') {
+
             // Setting the chore inactive
-
             onEdit(confirmData._id, { ...confirmData, isActive: false });
-        } else if (confirmData.action === 'activate') {
-            // Setting the chore active
 
+        } else if (confirmData.action === 'activate') {
+
+            // Setting the chore active
             onEdit(confirmData._id, { ...confirmData, isActive: true });
         };
 
