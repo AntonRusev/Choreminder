@@ -16,8 +16,6 @@ export const Register = () => {
 
     return (
         <main>
-            <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
-
             <form action="post" onSubmit={e => onSubmit(e)}>
 
                 {/* Email */}
@@ -30,8 +28,10 @@ export const Register = () => {
                         placeholder="Test"
                         value={formValues.email}
                         onChange={formValueChangeHandler}
-                        onBlur={validateForm} />
+                        onBlur={validateForm}
+                    />
 
+                    {/* Validation Error */}
                     <p>
                         {(formErrors.email) ? `${formErrors.email}` : ''}
                     </p>
@@ -47,14 +47,16 @@ export const Register = () => {
                         placeholder="Test"
                         value={formValues.password}
                         onChange={formValueChangeHandler}
-                        onBlur={validateForm} />
+                        onBlur={validateForm}
+                    />
 
+                    {/* Validation Error */}
                     <p>
                         {(formErrors.password) ? `${formErrors.password}` : ''}
                     </p>
                 </div>
 
-                {/* Password */}
+                {/* Repeat Password */}
                 <div>
                     <label htmlFor="rePass">Repeat password:</label>
                     <input
@@ -64,19 +66,19 @@ export const Register = () => {
                         placeholder="Test"
                         value={formValues.rePass}
                         onChange={formValueChangeHandler}
-                        onBlur={validateForm} />
+                        onBlur={validateForm}
+                    />
 
+                    {/* Validation Error */}
                     <p>
                         {(formErrors.rePass) ? `${formErrors.rePass}` : ''}
                     </p>
                 </div>
 
                 {/* Submit Button */}
-
                 <div>
                     <input type="submit" name='submit' value="Register" disabled={disabled} />
                 </div>
-
             </form>
         </main>
     );

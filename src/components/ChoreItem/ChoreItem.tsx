@@ -33,7 +33,6 @@ export const ChoreItem = ({
                     <article>
                         <p>ID: {_id}</p>
                         <p>Name: {name}</p>
-                        <p>IMG: {img}</p>
                         <p>Repeat Time: {days} days</p>
                         <p>Start Date: : {startDate}</p>
                         <p>Hours Remaining: {hoursRemaining} </p>

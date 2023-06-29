@@ -19,8 +19,17 @@ export const Login = () => {
                 {/* Email */}
                 <div>
                     <label htmlFor="email">Email:</label>
-                    <input type="text" id="email" name="email" value={formValues.email} onChange={formValueChangeHandler} onBlur={validateForm} />
+                    <input
+                        type="text"
+                        id="email"
+                        name="email"
+                        placeholder="Test"
+                        value={formValues.email}
+                        onChange={formValueChangeHandler}
+                        onBlur={validateForm}
+                    />
 
+                    {/* Validation Error */}
                     <p>
                         {(formErrors.email) ? `${formErrors.email}` : ''}
                     </p>
@@ -30,19 +39,26 @@ export const Login = () => {
                 {/* Password */}
                 <div>
                     <label htmlFor="password">Password:</label>
-                    <input type="password" id="password" name="password" value={formValues.password} onChange={formValueChangeHandler} onBlur={validateForm} />
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Test"
+                        value={formValues.password}
+                        onChange={formValueChangeHandler}
+                        onBlur={validateForm}
+                    />
 
+                    {/* Validation Error */}
                     <p>
                         {(formErrors.password) ? `${formErrors.password}` : ''}
                     </p>
                 </div>
 
                 {/* Submit Button */}
-
                 <div>
                     <input type="submit" name='submit' value="Login" disabled={disabled} />
                 </div>
-
             </form>
         </main>
     );

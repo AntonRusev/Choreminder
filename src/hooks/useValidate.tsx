@@ -54,6 +54,8 @@ export const useValidate = (originalValues: any, keys: any) => {
 
         if (name === 'name' && value === '') {
             setFormErrors({ ...formErrors, name: 'Name is required' });
+        } else if (name === 'name' && (value.length < 2)) {
+            setFormErrors({ ...formErrors, name: 'Name of chore must be minimum 2 characters long.' });
         } else if (name === 'name') {
             setFormErrors(removeError(formErrors, name));
         };
@@ -82,7 +84,6 @@ export const useValidate = (originalValues: any, keys: any) => {
     return {
         validateForm,
         formErrors,
-        touched,
         disabled,
     };
 };

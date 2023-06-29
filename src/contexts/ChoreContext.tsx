@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { AuthContext } from '../contexts/AuthContext';
+
 import * as choreService from '../services/choreService';
 
 export const ChoreContext = createContext({} as any);
@@ -10,7 +11,6 @@ export const ChoreProvider = ({
     children,
 }: any) => {
     const [chores, setChores] = useState([{}]);
-    const [formValues, setFormValues] = useState({} as any);
 
     const { auth } = useContext(AuthContext);
 
@@ -24,16 +24,9 @@ export const ChoreProvider = ({
         };
     }, [auth]);
 
-
-    // On filling the input fields - name, days, img
-
-    function formValueChangeHandler(e: any) {
-        setFormValues({ ...formValues, [e.target.name]: e.target.value });
-    };
-
     // On sending FORM input data
 
-    const onChoreCreate = async (e: any) => {
+    const onChoreCreate = async (e: any, formValues: any) => {
         e.preventDefault();
 
         const startDate: string = new Date().toString();
@@ -44,35 +37,33 @@ export const ChoreProvider = ({
         const newChore = await choreService.create(data)
 
         setChores([...chores, newChore]);
-        setFormValues({});
 
         navigate('/');
     };
 
-        // Editing a Chore(Reseting the timer or turning it inactive)
+    // Editing a Chore(Reseting the timer or turning it inactive)
 
-        const onEdit = async ( choreId: string, data: any) => {
-            const startDate: string = new Date().toString();
-    
-            const result = await choreService.edit(choreId, {...data, startDate});
-    
-            setChores(state => state.map((x: any) => x._id === data._id ? result : x));
-    
-            navigate('/');
-        };
+    const onEdit = async (choreId: string, data: any) => {
+        const startDate: string = new Date().toString();
 
-        // Deleting a Chore
+        const result = await choreService.edit(choreId, { ...data, startDate });
 
-        const onDelete = async (choreId: string) => {
-            await choreService.remove(choreId);
-    
-            setChores(state => state.filter((x: any) => x._id !== choreId));
-    
-            navigate('/');
-        };
+        setChores(state => state.map((x: any) => x._id === data._id ? result : x));
+
+        navigate('/');
+    };
+
+    // Deleting a Chore
+
+    const onDelete = async (choreId: string) => {
+        await choreService.remove(choreId);
+
+        setChores(state => state.filter((x: any) => x._id !== choreId));
+
+        navigate('/');
+    };
 
     const choreContextValue: {} = {
-        formValueChangeHandler,
         onChoreCreate,
         onEdit,
         onDelete,
