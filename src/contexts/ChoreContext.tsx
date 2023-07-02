@@ -24,6 +24,9 @@ export const ChoreProvider = ({
         };
     }, [auth]);
 
+    useEffect(() => {
+    }, [chores])
+
     // On sending FORM input data
 
     const onChoreCreate = async (e: any, formValues: any) => {
@@ -63,10 +66,25 @@ export const ChoreProvider = ({
         navigate('/');
     };
 
+    // Sorting the chores
+
+    const sortChores = (order: string, key:string ) => {
+        let sortedChores: any;
+
+        if (order === 'fromMin') {
+            sortedChores = [...chores].sort((a: any, b: any) => { return (a[key] > b[key] ? 1 : -1) });
+        } else if (order === 'fromMax') {
+            sortedChores = [...chores].sort((a: any, b: any) => { return (b[key] > a[key] ? 1 : -1) });
+        };
+        setChores(sortedChores);
+        console.log(typeof order)
+    };
+
     const choreContextValue: {} = {
         onChoreCreate,
         onEdit,
         onDelete,
+        sortChores,
         chores,
     };
 

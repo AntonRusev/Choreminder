@@ -28,7 +28,7 @@ export const ChoreItem = ({
 
     return (
         <li className={css.chore}>
-            {isActive
+            {isActive === true
                 ? <>
                     <article>
                         <p>ID: {_id}</p>
