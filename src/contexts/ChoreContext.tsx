@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../contexts/AuthContext';
 
 import * as choreService from '../services/choreService';
+import { useProgress } from "../hooks/useProgress";
 
 export const ChoreContext = createContext({} as any);
 
@@ -37,7 +38,7 @@ export const ChoreProvider = ({
 
         const data: {} = { ...formValues, startDate, isActive };
 
-        const newChore = await choreService.create(data)
+        const newChore = await choreService.create(data);
 
         setChores([...chores, newChore]);
 
@@ -68,7 +69,7 @@ export const ChoreProvider = ({
 
     // Sorting the chores
 
-    const sortChores = (order: string, key:string ) => {
+    const sortChores = (order: string, key: string) => {
         let sortedChores: any;
 
         if (order === 'fromMin') {
@@ -77,7 +78,6 @@ export const ChoreProvider = ({
             sortedChores = [...chores].sort((a: any, b: any) => { return (b[key] > a[key] ? 1 : -1) });
         };
         setChores(sortedChores);
-        console.log(typeof order)
     };
 
     const choreContextValue: {} = {

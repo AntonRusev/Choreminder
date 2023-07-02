@@ -25,7 +25,6 @@ export const ChoreItem = ({
 
     const { hoursRemaining, progress } = useProgress(days, startDate);
 
-
     return (
         <li className={css.chore}>
             {isActive === true
@@ -36,7 +35,7 @@ export const ChoreItem = ({
                         <p>Repeat Time: {days} days</p>
                         <p>Start Date: : {startDate}</p>
                         <p>Hours Remaining: {hoursRemaining} </p>
-                        <p>Progress: {progress.toFixed(2)} </p>
+                        <p>Progress: {progress?.toFixed(2)} </p>
                         <p>Active: {isActive} </p>
                     </article>
                     <div>
