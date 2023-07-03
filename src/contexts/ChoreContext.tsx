@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../contexts/AuthContext';
 
 import * as choreService from '../services/choreService';
-import { useProgress } from "../hooks/useProgress";
 
 export const ChoreContext = createContext({} as any);
 
@@ -12,6 +11,8 @@ export const ChoreProvider = ({
     children,
 }: any) => {
     const [chores, setChores] = useState([{}]);
+    const [displayedChores, setDisplayedChores] = useState([{}]);
+    const [searchPhrase, setSearchPhrase] = useState('');
 
     const { auth } = useContext(AuthContext);
 
@@ -26,7 +27,10 @@ export const ChoreProvider = ({
     }, [auth]);
 
     useEffect(() => {
-    }, [chores])
+        if (chores.length > 0) {
+            setDisplayedChores(chores);
+        };
+    }, [chores]);
 
     // On sending FORM input data
 
@@ -80,12 +84,38 @@ export const ChoreProvider = ({
         setChores(sortedChores);
     };
 
+    // Search 
+
+    const searchChores = (e: any) => {
+        e.preventDefault();
+
+        setSearchPhrase(e.target.value);
+
+        const matched = chores.filter((e: any) => {
+            return e.name
+                .toLowerCase()
+                .includes(searchPhrase.toLowerCase())
+        });
+        setDisplayedChores(matched);
+    };
+
+    const clear = (e: any) => {
+        e.preventDefault();
+
+        setSearchPhrase('');
+        setDisplayedChores(chores);
+    };
+
     const choreContextValue: {} = {
         onChoreCreate,
         onEdit,
         onDelete,
         sortChores,
+        searchChores,
+        clear,
+        displayedChores,
         chores,
+        searchPhrase,
     };
 
     return (

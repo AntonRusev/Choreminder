@@ -4,6 +4,7 @@ import { ChoreList } from "../ChoresList/ChoresList";
 import { CreateChore } from "../CreateChore/CreateChore";
 
 import { AuthContext } from '../../contexts/AuthContext';
+import { Search } from "../Search/Search";
 
 export const Home = () => {
     const { auth } = useContext(AuthContext);
@@ -13,6 +14,7 @@ export const Home = () => {
             {auth._id
                 ?
                 <>
+                    <Search />
                     <ChoreList />
                     <CreateChore />
                 </>

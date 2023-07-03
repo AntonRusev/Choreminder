@@ -9,17 +9,17 @@ import { Confirm } from '../Confirm/Confirm';
 import * as css from './ChoresList.module.scss';
 
 export const ChoreList = () => {
-    const { chores, sortChores } = useContext(ChoreContext);
+    const { displayedChores, sortChores } = useContext(ChoreContext);
     const { isConfirmActive } = useContext(ConfirmContext);
 
     // TODO Fix the key!! 
     return (
         <>
             <section>
-                {chores
+                {displayedChores
                     ?
                     <ul className={css.list}>
-                        {chores.map((chore: any, index: number) => <ChoreItem key={index} {...chore} />)}
+                        {displayedChores.map((chore: any, index: number) => <ChoreItem key={index} {...chore} />)}
                     </ul>
                     :
                     <p>
