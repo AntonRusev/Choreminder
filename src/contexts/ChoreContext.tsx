@@ -7,12 +7,22 @@ import * as choreService from '../services/choreService';
 
 export const ChoreContext = createContext({} as any);
 
+// TODO - Break this megacomponent into smaller ones when implementing REDUX!
+
 export const ChoreProvider = ({
     children,
 }: any) => {
     const [chores, setChores] = useState([{}]);
     const [displayedChores, setDisplayedChores] = useState([{}]);
     const [searchPhrase, setSearchPhrase] = useState('');
+    const [page, setPage] = useState({
+        currentPage: 0,
+        resultsShown: 5
+    });
+    const [pagesLimit, setPagesLimit] = useState({
+        maxPages: 0,
+        overallResults: 0
+    })
 
     const { auth } = useContext(AuthContext);
 
@@ -28,9 +38,37 @@ export const ChoreProvider = ({
 
     useEffect(() => {
         if (chores.length > 0) {
-            setDisplayedChores(chores);
+            displayChores(chores);
+
+            pageLimit(chores);
         };
     }, [chores]);
+
+    useEffect(() => {
+            displayChores(chores);
+    }, [page]);
+
+    // Displaying chores
+
+    const displayChores = (chores: any) => {
+        const toShow = [];
+
+        let start = page.currentPage * page.resultsShown;
+        let end = start + page.resultsShown;
+
+        if (end > pagesLimit.overallResults && pagesLimit.overallResults > 1) {
+            end = pagesLimit.overallResults;
+        };
+
+        for (let i = start; i < end; i++) {
+            toShow.push(chores[i]);
+        };
+
+        console.log(page.currentPage)
+        console.log(page.resultsShown)
+
+        setDisplayedChores(toShow);
+    };
 
     // On sending FORM input data
 
@@ -81,6 +119,7 @@ export const ChoreProvider = ({
         } else if (order === 'fromMax') {
             sortedChores = [...chores].sort((a: any, b: any) => { return (b[key] > a[key] ? 1 : -1) });
         };
+
         setChores(sortedChores);
     };
 
@@ -96,14 +135,40 @@ export const ChoreProvider = ({
                 .toLowerCase()
                 .includes(searchPhrase.toLowerCase())
         });
-        setDisplayedChores(matched);
+
+        displayChores(matched);
     };
+
+    // Clearing Search input field
 
     const clear = (e: any) => {
         e.preventDefault();
 
         setSearchPhrase('');
         setDisplayedChores(chores);
+    };
+
+    // Changing Page 
+
+    const changePage = (e: any) => {
+        e.preventDefault();
+
+        const direction = e.target.name;
+
+        if (direction === 'next') {
+            setPage({ currentPage: ++page.currentPage, resultsShown: page.resultsShown });
+        } else if (direction === 'back') {
+            setPage({ currentPage: --page.currentPage, resultsShown: page.resultsShown });
+        }
+    };
+
+    // Set page limit
+
+    const pageLimit = (chores: any) => {
+        const overallResults = chores.length;
+        const maxPages = Math.ceil(overallResults / page.resultsShown);
+
+        setPagesLimit({ maxPages, overallResults });
     };
 
     const choreContextValue: {} = {
@@ -113,9 +178,12 @@ export const ChoreProvider = ({
         sortChores,
         searchChores,
         clear,
+        changePage,
         displayedChores,
         chores,
         searchPhrase,
+        page,
+        pagesLimit
     };
 
     return (
