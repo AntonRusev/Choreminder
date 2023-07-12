@@ -6,6 +6,7 @@ import { CreateChore } from "../CreateChore/CreateChore";
 import { AuthContext } from '../../contexts/AuthContext';
 import { Search } from "../Search/Search";
 import { Paginator } from "../Paginator/Paginator";
+import { SortChores } from "../SortChores/SortChores";
 
 export const Home = () => {
     const { auth } = useContext(AuthContext);
@@ -16,6 +17,7 @@ export const Home = () => {
                 ?
                 <>
                     <Search />
+                    <SortChores />
                     <ChoreList />
                     <CreateChore />
                     <Paginator />

@@ -9,7 +9,7 @@ import { Confirm } from '../Confirm/Confirm';
 import * as css from './ChoresList.module.scss';
 
 export const ChoreList = () => {
-    const { displayedChores, sortChores } = useContext(ChoreContext);
+    const { displayedChores } = useContext(ChoreContext);
     const { isConfirmActive } = useContext(ConfirmContext);
 
     // TODO Fix the key!! 
@@ -26,9 +26,6 @@ export const ChoreList = () => {
                         No chores.
                     </p>
                 }
-                <button onClick={() => sortChores('fromMin', 'name')}>Sort by Name</button>
-                <button onClick={() => sortChores('fromMin', 'days')}>Sort by Days</button>
-                <button onClick={() => sortChores('fromMin', 'startDate')}>Sort by starting date</button>
             </section>
 
             {/* Confirmation Window */}
