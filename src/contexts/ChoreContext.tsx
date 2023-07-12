@@ -7,8 +7,6 @@ import * as choreService from '../services/choreService';
 
 export const ChoreContext = createContext({} as any);
 
-// TODO - Break this megacomponent into smaller ones
-
 export const ChoreProvider = ({
     children,
 }: any) => {
@@ -29,7 +27,7 @@ export const ChoreProvider = ({
 
     // Displaying chores
 
-    const displayChores = (chores: any, page = { currentPage: 0, resultsShown: 5 }, pagesLimit = { maxPages: 0, overallResults: 0 }) => {
+    const displayChores = (chores: any, page = { currentPage: 0, resultsShown: 5 }, pagesLimit = { maxPages: 0, overallResults: 1 }) => {
         const toShow = [];
 
 
@@ -52,14 +50,18 @@ export const ChoreProvider = ({
     const onChoreCreate = async (e: any, formValues: any) => {
         e.preventDefault();
 
-        const startDate: string = new Date().toString();
+        const startDate: any = new Date().toString();
+        let endDate: any = new Date();
+        endDate.setDate(endDate.getDate() + Number(formValues.days));
+        endDate = endDate.toString();
+
         const isActive: boolean = true;
 
-        const data: {} = { ...formValues, startDate, isActive };
+        const data: {} = { ...formValues, startDate, endDate, isActive};
 
         const newChore = await choreService.create(data);
 
-        setChores([...chores, newChore]);
+        setChores([...chores, {...newChore}]);
 
         navigate('/');
     };

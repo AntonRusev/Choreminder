@@ -12,6 +12,7 @@ export const ChoreItem = ({
     days,
     img,
     startDate,
+    endDate,
     isActive,
 }: {
     _id: string,
@@ -19,6 +20,7 @@ export const ChoreItem = ({
     days: number,
     img: string,
     startDate: any,
+    endDate: any,
     isActive: boolean,
 }) => {
     const { onActivateConfirm } = useContext(ConfirmContext);
@@ -33,7 +35,8 @@ export const ChoreItem = ({
                         <p>ID: {_id}</p>
                         <p>Name: {name}</p>
                         <p>Repeat Time: {days} days</p>
-                        <p>Start Date: : {startDate}</p>
+                        <p>Start Date: {startDate}</p>
+                        <p>End Date: {endDate}</p>
                         <p>Hours Remaining: {hoursRemaining} </p>
                         <p>Progress: {progress?.toFixed(2)} </p>
                         <p>Active: {isActive} </p>
