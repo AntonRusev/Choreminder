@@ -7,6 +7,7 @@ export const SortChores = () => {
     const [sortOrder, setSortOrder] = useState('incremental');
     const { chores, setChores } = useContext(ChoreContext);
 
+    // Sorting the existing chores
     const sortChores = (order: string, sortBy: string) => {
         changeSortOrder();
 
@@ -26,6 +27,7 @@ export const SortChores = () => {
         setChores(sortedChores);
     };
 
+    // Changing sort order
     const changeSortOrder = () => {
         if (sortOrder === 'incremental') {
             setSortOrder('decremental');
@@ -38,8 +40,8 @@ export const SortChores = () => {
         <>
             <button onClick={() => sortChores(sortOrder, 'name')}>Sort by Name</button>
             <button onClick={() => sortChores(sortOrder, 'days')}>Sort by Days</button>
-            <button onClick={() => sortChores(sortOrder, 'startDate')}>Sort by starting date</button>
-            <button onClick={() => sortChores(sortOrder, 'endDate')}>Sort by end date</button>
+            <button onClick={() => sortChores(sortOrder, 'startDate')}>Sort by start of timer</button>
+            <button onClick={() => sortChores(sortOrder, 'endDate')}>Sort by remaining hours</button>
         </>
     );
 };

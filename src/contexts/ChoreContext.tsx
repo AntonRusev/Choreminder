@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../contexts/AuthContext';
 
 import * as choreService from '../services/choreService';
+
 import { dateGenerator } from "../utils/dateGenerator";
+import { dateSort } from "../utils/sorters";
 
 export const ChoreContext = createContext({} as any);
 
@@ -21,7 +23,10 @@ export const ChoreProvider = ({
     useEffect(() => {
         if (auth._id) {
             choreService.getAll(auth._id)
-                .then(result => setChores(result))
+                .then(result => {
+                    // Initial sort by least time remaining
+                    setChores([...result].sort((a: any, b: any) => dateSort(a, b, 'endDate', 'incremental')));
+                })
                 .catch(error => console.log(error));
         };
     }, [auth]);
@@ -50,12 +55,12 @@ export const ChoreProvider = ({
     const onChoreCreate = async (e: any, formValues: any) => {
         e.preventDefault();
 
-        // Generate start and end date;
+        // Generate start and end date of the chore;
         const { startDate, endDate } = dateGenerator(formValues.days);
 
         const isActive: boolean = true;
 
-        const data: {} = { ...formValues, startDate, endDate, isActive};
+        const data: {} = { ...formValues, startDate, endDate, isActive };
 
         const newChore = await choreService.create(data);
 
@@ -67,9 +72,9 @@ export const ChoreProvider = ({
     // Editing a Chore(Reseting the timer or turning it inactive)
 
     const onEdit = async (choreId: string, data: any) => {
-        const startDate: string = new Date().toString();
+        const { startDate, endDate } = dateGenerator(data.days);
 
-        const result = await choreService.edit(choreId, { ...data, startDate });
+        const result = await choreService.edit(choreId, { ...data, startDate, endDate });
 
         setChores(state => state.map((x: any) => x._id === data._id ? result : x));
 

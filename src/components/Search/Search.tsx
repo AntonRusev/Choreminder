@@ -13,10 +13,12 @@ export const Search = () => {
         }
     }, [searchPhrase, chores]);
 
+    // On entering search param
     const onSearchInput = (e: any) => {
         setSearchPhrase(e.target.value);
     };
 
+    // Comparing the search param to existing chores
     const searchChores = (searchPhrase: string) => {
         const matched = chores.filter((chore: any) => {
             return chore.name
@@ -27,6 +29,7 @@ export const Search = () => {
         displayChores(matched);
     };
 
+    // Clearing the search param
     const clear = (e: any) => {
         e.preventDefault();
 

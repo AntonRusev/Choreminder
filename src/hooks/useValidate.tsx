@@ -69,12 +69,12 @@ export const useValidate = (originalValues: any, keys: any) => {
         };
     };
 
-    //Email validation
+    // Email validation
     const isEmailValid = (email: string) => {
         return /\S+@\S+\.\S+/.test(email);
     };
 
-    //Removing Error 
+    // Removing Form Error upon providing correct input
     const removeError = (errObj: any, key: any) => {
         delete errObj[`${key}`];
 

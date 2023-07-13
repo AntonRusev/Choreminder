@@ -17,7 +17,7 @@ export const useProgress = (days: number, startDate: any) => {
         };
     }, [days, hoursRemaining]);
 
-    // Calculating remaining hours till the chore
+    // Calculating remaining hours till the chore has to be done
 
     const setChoreTimer = (daysInput: number, startingTime: any) => {
         const hours: number = Number(daysInput) * 24;
@@ -26,7 +26,6 @@ export const useProgress = (days: number, startDate: any) => {
 
         const currentTime = new Date();
 
-        // TODO Check if the hoursRemaining are not more than the base hours!!!
         let hoursRemaining: number = hours - hoursCalculator(startingTime, currentTime);
 
         if (hoursRemaining < 0) {

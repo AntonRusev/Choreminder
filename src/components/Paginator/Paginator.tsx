@@ -14,7 +14,6 @@ export const Paginator = () => {
     useEffect(() => {
         if (chores.length > 0) {
             displayChores(chores, page);
-
             pageLimit(chores);
         };
     }, [chores]);
@@ -23,7 +22,7 @@ export const Paginator = () => {
         displayChores(chores, page);
     }, [page]);
 
-
+    // On changing page
     const changePage = (e: any) => {
         e.preventDefault();
 
@@ -36,8 +35,7 @@ export const Paginator = () => {
         }
     };
 
-    // Set page limit
-
+    // Setting page limit
     const pageLimit = (chores: any) => {
         const overallResults = chores.length;
         const maxPages = Math.ceil(overallResults / page.resultsShown);
