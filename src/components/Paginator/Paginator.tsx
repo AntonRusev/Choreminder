@@ -5,25 +5,22 @@ import { ChoreContext } from "../../contexts/ChoreContext";
 export const Paginator = () => {
     const [page, setPage] = useState({
         currentPage: 0,
-        resultsShown: 5
-    });
-    const [pagesLimit, setPagesLimit] = useState({
-        maxPages: 0,
-        overallResults: 0
+        resultsShown: 5,
+        maxPages: 0
     });
 
     const { displayChores, chores } = useContext(ChoreContext);
 
     useEffect(() => {
         if (chores.length > 0) {
-            displayChores(chores, page, pagesLimit);
+            displayChores(chores, page);
 
             pageLimit(chores);
         };
     }, [chores]);
 
     useEffect(() => {
-        displayChores(chores, page, pagesLimit);
+        displayChores(chores, page);
     }, [page]);
 
 
@@ -33,9 +30,9 @@ export const Paginator = () => {
         const direction = e.target.name;
 
         if (direction === 'next') {
-            setPage({ currentPage: ++page.currentPage, resultsShown: page.resultsShown });
+            setPage({ ...page, currentPage: ++page.currentPage, resultsShown: page.resultsShown });
         } else if (direction === 'back') {
-            setPage({ currentPage: --page.currentPage, resultsShown: page.resultsShown });
+            setPage({ ...page, currentPage: --page.currentPage, resultsShown: page.resultsShown });
         }
     };
 
@@ -45,7 +42,7 @@ export const Paginator = () => {
         const overallResults = chores.length;
         const maxPages = Math.ceil(overallResults / page.resultsShown);
 
-        setPagesLimit({ maxPages, overallResults });
+        setPage({ ...page, maxPages });
     };
 
     return (
@@ -57,7 +54,7 @@ export const Paginator = () => {
                 }
                 <span> Page: {page?.currentPage + 1} </span>
 
-                {page.currentPage < pagesLimit.maxPages - 1
+                {page.currentPage < page.maxPages - 1
                     ? <button name="next" onClick={changePage}> Next- </button>
                     : <p></p>
                 }

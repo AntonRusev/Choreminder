@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../contexts/AuthContext';
 
 import * as choreService from '../services/choreService';
+import { dateGenerator } from "../utils/dateGenerator";
 
 export const ChoreContext = createContext({} as any);
 
@@ -27,15 +28,15 @@ export const ChoreProvider = ({
 
     // Displaying chores
 
-    const displayChores = (chores: any, page = { currentPage: 0, resultsShown: 5 }, pagesLimit = { maxPages: 0, overallResults: 1 }) => {
+    const displayChores = (chores: any, page = { currentPage: 0, resultsShown: 5, maxPages: 0 }) => {
         const toShow = [];
 
 
         let start = page.currentPage * page.resultsShown;
         let end = start + page.resultsShown;
 
-        if (end > pagesLimit.overallResults && pagesLimit.overallResults > 1) {
-            end = pagesLimit.overallResults;
+        if (end > chores.length) {
+            end = chores.length;
         };
 
         for (let i = start; i < end; i++) {
@@ -50,10 +51,8 @@ export const ChoreProvider = ({
     const onChoreCreate = async (e: any, formValues: any) => {
         e.preventDefault();
 
-        const startDate: any = new Date().toString();
-        let endDate: any = new Date();
-        endDate.setDate(endDate.getDate() + Number(formValues.days));
-        endDate = endDate.toString();
+        // Generate start and end date;
+        const { startDate, endDate } = dateGenerator(formValues.days);
 
         const isActive: boolean = true;
 
@@ -61,7 +60,7 @@ export const ChoreProvider = ({
 
         const newChore = await choreService.create(data);
 
-        setChores([...chores, {...newChore}]);
+        setChores([newChore, ...chores]);
 
         navigate('/');
     };
