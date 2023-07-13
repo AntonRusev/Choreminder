@@ -28,19 +28,18 @@ export const ChoreProvider = ({
 
     // Displaying chores
 
-    const displayChores = (chores: any, page = { currentPage: 0, resultsShown: 5, maxPages: 0 }) => {
+    const displayChores = (choresToDisplay: any, page = { currentPage: 0, resultsShown: 5, maxPages: 0 }) => {
         const toShow = [];
-
 
         let start = page.currentPage * page.resultsShown;
         let end = start + page.resultsShown;
 
-        if (end > chores.length) {
-            end = chores.length;
+        if (end > choresToDisplay.length) {
+            end = choresToDisplay.length;
         };
 
         for (let i = start; i < end; i++) {
-            toShow.push(chores[i]);
+            toShow.push(choresToDisplay[i]);
         };
 
         setDisplayedChores(toShow);

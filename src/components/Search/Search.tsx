@@ -1,19 +1,25 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { ChoreContext } from "../../contexts/ChoreContext";
 
 export const Search = () => {
     const [searchPhrase, setSearchPhrase] = useState('');
-    
-    const { setDisplayedChores, displayChores, chores} = useContext(ChoreContext);
 
-    const searchChores = (e: any) => {
-        e.preventDefault();
+    const { displayChores, chores } = useContext(ChoreContext);
 
+    useEffect(() => {
+        if (chores.length > 1) {
+            searchChores(searchPhrase);
+        }
+    }, [searchPhrase, chores]);
+
+    const onSearchInput = (e: any) => {
         setSearchPhrase(e.target.value);
+    };
 
-        const matched = chores.filter((e: any) => {
-            return e.name
+    const searchChores = (searchPhrase: string) => {
+        const matched = chores.filter((chore: any) => {
+            return chore.name
                 .toLowerCase()
                 .includes(searchPhrase.toLowerCase())
         });
@@ -25,7 +31,6 @@ export const Search = () => {
         e.preventDefault();
 
         setSearchPhrase('');
-        setDisplayedChores(chores);
     };
 
     return (
@@ -36,7 +41,7 @@ export const Search = () => {
                         type="text"
                         placeholder="Search by chore name"
                         value={searchPhrase}
-                        onChange={searchChores}
+                        onChange={onSearchInput}
                     />
 
                     <button onClick={clear}>Clear</button>
