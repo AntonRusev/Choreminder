@@ -3,5 +3,6 @@
 
 .searchbar {
     display: flex;
-    
+    position: absolute;
+    z-index: 1;
 }

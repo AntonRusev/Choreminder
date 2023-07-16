@@ -49,7 +49,7 @@ const Search = () => {
 
             {showSearchbar
                 ? <div>
-                    <button className={`${style.addBtn} ${style.animate}`} onClick={() => toggleSearch()}>Close</button>
+                    <button onClick={() => toggleSearch()}>Close</button>
                     <form className={style.searchbar} action="post">
                         <input
                             type="text"

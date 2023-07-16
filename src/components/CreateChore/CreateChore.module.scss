@@ -9,7 +9,7 @@
     .form {
         @include flexCenterContainer(map-get($colors, "primary"));
         flex-direction: column;
-        // gap: $base-gap;
+        gap: $base-gap;
         width: 14rem;
         height: 10rem;
         border: solid 2px black;
@@ -24,43 +24,5 @@
         &:hover {
             cursor: pointer;
         }
-    }
-}
-
-// Fade in animation 
-.animate {
-    position: absolute;
-
-    animation-duration: 0.2s;
-    animation-name: animate-fade;
-    animation-delay: 0.2s;
-    animation-fill-mode: backwards;
-}
-
-@keyframes animate-fade {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-.animate.pop {
-    animation-duration: 0.2s;
-    animation-name: animate-pop;
-    animation-timing-function: cubic-bezier(0.2);
-}
-
-@keyframes animate-pop {
-    0% {
-        opacity: 0;
-        transform: scale(0.5, 0.5);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1, 1);
     }
 }

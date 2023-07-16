@@ -47,11 +47,9 @@ const SortChores = () => {
     return (
         <div className={`${style.sort}`}>
 
-            {showSortOptions
-                ? <button className={`${style.toggleBtn}`} onClick={() => toggleSort()}>Sort by...</button>
-                : <div className={`${style.sort}`}>
-                    <button className={`${style.toggleBtn}`} onClick={() => toggleSort()}>Close</button>
-
+            {!showSortOptions
+                ? <div className={`${style.sortTwo}`}>
+                    <button onClick={() => toggleSort()}>Close</button>
                     <div className={`${style.sortingOptions}`}>
                         <button onClick={() => sortChores(sortOrder, 'name')}>Sort by Name</button>
                         <button onClick={() => sortChores(sortOrder, 'days')}>Sort by Days</button>
@@ -59,7 +57,9 @@ const SortChores = () => {
                         <button onClick={() => sortChores(sortOrder, 'endDate')}>Sort by remaining hours</button>
                     </div>
                 </div>
+                : <button onClick={() => toggleSort()}>Sort by...</button>
             }
+
         </div>
     );
 };

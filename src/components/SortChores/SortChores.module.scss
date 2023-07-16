@@ -7,6 +7,16 @@
     align-items: end;
 }
 
+.sortTwo {
+    // FIX MARGIN TOP
+    margin-top: -10px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    position: absolute;
+    z-index: 1;
+}
+
 .sortingOptions {
     display: flex;
     flex-direction: column;

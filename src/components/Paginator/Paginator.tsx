@@ -2,6 +2,8 @@ import { memo, useContext, useEffect, useState } from "react";
 
 import { ChoreContext } from "../../contexts/ChoreContext";
 
+import style from './Paginator.module.scss';
+
 const Paginator = () => {
     const [page, setPage] = useState({
         currentPage: 0,
@@ -44,7 +46,7 @@ const Paginator = () => {
     };
 
     return (
-        <section>
+        <section className={style.paginator}>
             <div>
                 {page.currentPage > 0
                     ? <button name="back" onClick={changePage}> -Back </button>

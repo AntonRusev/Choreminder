@@ -1,5 +1,7 @@
 @import url('./reset.css');
+@import './scss/variables.scss';
+@import './scss/mixins.scss';
 
 body {
-  background-color: darkolivegreen;
+  background-color: map-get($colors, "primary");
 }
