@@ -4,7 +4,7 @@ import { ConfirmContext } from "../../contexts/ConfirmContext";
 
 import { useProgress } from "../../hooks/useProgress";
 
-import * as css from './ChoreItem.module.scss';
+import style from './ChoreItem.module.scss';
 
 const ChoreItem = ({
     _id,
@@ -28,7 +28,7 @@ const ChoreItem = ({
     const { hoursRemaining, progress } = useProgress(days, startDate);
 
     return (
-        <li className={css.chore}>
+        <li className={style.chore}>
             {isActive === true
                 ? <>
                     <article>
@@ -41,13 +41,16 @@ const ChoreItem = ({
                         <p>Progress: {progress?.toFixed(2)} </p>
                         <p>Active: {isActive} </p>
                     </article>
-                    <div>
+                    
+                    <div className={style.progressbar}>
                         <label htmlFor="chore">{name}: </label>
-                        <progress id="chore" className={css.progressbar} value={hoursRemaining} max={days * 24}></progress>
+                        <progress id="chore" value={hoursRemaining} max={days * 24}></progress>
 
-                        <button onClick={() => onActivateConfirm({ action: "reset", _id, name, days, isActive })}>Reset</button>
-                        <button onClick={() => onActivateConfirm({ action: "stop", _id, name, days, isActive: false })}>Stop</button>
-                        <button onClick={() => onActivateConfirm({ action: "delete", _id, })}>Delete</button>
+                        <div className={style.btns}>
+                            <button onClick={() => onActivateConfirm({ action: "reset", _id, name, days, isActive })}>Reset</button>
+                            <button onClick={() => onActivateConfirm({ action: "stop", _id, name, days, isActive: false })}>Stop</button>
+                            <button onClick={() => onActivateConfirm({ action: "delete", _id, })}>Delete</button>
+                        </div>
                     </div>
                 </>
                 :

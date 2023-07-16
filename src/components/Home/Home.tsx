@@ -18,13 +18,15 @@ const Home = () => {
         <main className={style.home}>
             {auth._id
                 ?
-                <>
-                    <Search />
-                    <SortChores />
-                    <ChoreList />
+                <section>
+                    <div>
+                        <Search />
+                        <SortChores />
+                    </div>
                     <CreateChore />
+                    <ChoreList />
                     <Paginator />
-                </>
+                </section>
                 :
                 <div>
                     <li><Link to='/login'>LOGIN</Link></li>

@@ -1,13 +1,53 @@
-.progressbar {
-    transform: rotate(180deg);
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 1.2rem;
-}
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
 
 .chore {
-    margin: 1rem 1rem;
-    padding: 1rem 1rem;
-    color: white;
-    background-color: rgb(3, 70, 92);
+    @include flexCenterContainer(map-get($colors, "primary-light"));
+    flex-direction: column;
+    gap: $base-padding;
+    width: 100%;
+    margin: $base-margin 0;
+    padding: $base-padding 0;
+    color: map-get($colors, "black");
+
+    article {
+        padding: $base-padding
+    }
+
+    .progressbar {
+        @include flexCenterContainer(map-get($colors, "primary-light"));
+        flex-direction: column;
+        gap: $base-padding / 2;
+        width: 100%;
+
+        progress {
+            transform: rotate(180deg);
+            background-color: map-get($colors, "white");
+            border-radius: $base-border-radius;
+            border: 1px solid map-get($colors, "primary-light");
+            width: 80%;
+            height: 42px;
+        }
+        
+        progress::-webkit-progress-bar {
+            background-color: white;
+            border-radius: $base-border-radius;
+        }
+        
+        progress::-webkit-progress-value {
+            background-color: blue;
+            border-radius: $base-border-radius;
+        
+        }
+        
+        progress::-moz-progress-bar {
+            background-color: blue;
+            border-radius: $base-border-radius;
+        }
+        
+        progress::-moz-progress-value {
+            background-color: gray;
+            border-radius: $base-border-radius;
+        }
+    }
 }

@@ -6,7 +6,9 @@ $colors: (
     "secondary": #ed1c24,
     "light-blue": #62cbe7,
     "light-green": #5fbd5a,
-    "gray": #cccccc
+    "gray": #cccccc,
+    "white": #fff,
+    "black": #000000,
 );
 
 // spacing
@@ -15,7 +17,7 @@ $base-margin: 2rem;
 
 // borders
 $base-border-thickness: 1px;
-$base-border-radius: 20px;
+$base-border-radius: 12px;
 
 // @import "./variables.scss";
 
