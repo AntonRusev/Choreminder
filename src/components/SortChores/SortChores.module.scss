@@ -1,0 +1,14 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.sort {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.sortingOptions {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}

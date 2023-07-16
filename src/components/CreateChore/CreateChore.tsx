@@ -4,6 +4,8 @@ import { ChoreContext } from "../../contexts/ChoreContext";
 
 import { useForm } from '../../hooks/useForm';
 
+import style from './CreateChore.module.scss';
+
 const CreateChore = () => {
     const { onChoreCreate } = useContext(ChoreContext);
     const [showCreate, setShowCreate] = useState(false);
@@ -13,16 +15,21 @@ const CreateChore = () => {
         days: '',
     }, onChoreCreate);
 
+    // Toggle the create chore form
     const toggleCreate = () => {
         setShowCreate(!showCreate);
     };
 
     return (
-        <main>
+        <main className={style.create}>
             {
                 showCreate
                     ?
-                    <form action="post" onSubmit={e => onSubmit(e)}>
+                    <form
+                        action="post"
+                        className={`${style.form} ${style.animate}`}
+                        onSubmit={e => onSubmit(e)}
+                    >
 
                         {/* Chore Name */}
                         <div>
@@ -67,11 +74,8 @@ const CreateChore = () => {
                         </div>
                     </form>
                     :
-                    <button onClick={() => toggleCreate()}>Add new chore.</button>
+                    <button className={`${style.addBtn} ${style.animate}`} onClick={() => toggleCreate()}>Add new chore.</button>
             }
-
-
-
         </main>
     );
 };

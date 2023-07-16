@@ -19,7 +19,7 @@ const Home = () => {
             {auth._id
                 ?
                 <section>
-                    <div>
+                    <div className={style.sorting}>
                         <Search />
                         <SortChores />
                     </div>

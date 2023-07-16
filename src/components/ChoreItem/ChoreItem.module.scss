@@ -4,7 +4,7 @@
 .chore {
     @include flexCenterContainer(map-get($colors, "primary-light"));
     flex-direction: column;
-    gap: $base-padding;
+    gap: $base-gap;
     width: 100%;
     margin: $base-margin 0;
     padding: $base-padding 0;
@@ -17,7 +17,7 @@
     .progressbar {
         @include flexCenterContainer(map-get($colors, "primary-light"));
         flex-direction: column;
-        gap: $base-padding / 2;
+        gap: $base-gap;
         width: 100%;
 
         progress {

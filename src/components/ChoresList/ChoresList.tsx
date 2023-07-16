@@ -6,7 +6,7 @@ import { ConfirmContext } from '../../contexts/ConfirmContext';
 import ChoreItem from '../ChoreItem/ChoreItem';
 import { Confirm } from '../Confirm/Confirm';
 
-import * as css from './ChoresList.module.scss';
+import style from './ChoresList.module.scss';
 
 const ChoreList = () => {
     const { displayedChores } = useContext(ChoreContext);
@@ -18,7 +18,7 @@ const ChoreList = () => {
             <section>
                 {displayedChores
                     ?
-                    <ul className={css.list}>
+                    <ul className={style.list}>
                         {displayedChores.map((chore: any, index: number) => <ChoreItem key={index} {...chore} />)}
                     </ul>
                     :

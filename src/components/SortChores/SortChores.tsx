@@ -3,9 +3,17 @@ import { memo, useContext, useState } from "react";
 import { ChoreContext } from "../../contexts/ChoreContext";
 import { dateSort, daysSort } from "../../utils/sorters";
 
+import style from './SortChores.module.scss';
+
 const SortChores = () => {
     const [sortOrder, setSortOrder] = useState('incremental');
+    const [showSortOptions, setShowSortOptions] = useState(false);
     const { chores, setChores } = useContext(ChoreContext);
+
+    // Toggle the dropdown sorting menu
+    const toggleSort = () => {
+        setShowSortOptions(!showSortOptions);
+    };
 
     // Sorting the existing chores
     const sortChores = (order: string, sortBy: string) => {
@@ -37,12 +45,22 @@ const SortChores = () => {
     };
 
     return (
-        <>
-            <button onClick={() => sortChores(sortOrder, 'name')}>Sort by Name</button>
-            <button onClick={() => sortChores(sortOrder, 'days')}>Sort by Days</button>
-            <button onClick={() => sortChores(sortOrder, 'startDate')}>Sort by start of timer</button>
-            <button onClick={() => sortChores(sortOrder, 'endDate')}>Sort by remaining hours</button>
-        </>
+        <div className={`${style.sort}`}>
+
+            {showSortOptions
+                ? <button className={`${style.toggleBtn}`} onClick={() => toggleSort()}>Sort by...</button>
+                : <div className={`${style.sort}`}>
+                    <button className={`${style.toggleBtn}`} onClick={() => toggleSort()}>Close</button>
+
+                    <div className={`${style.sortingOptions}`}>
+                        <button onClick={() => sortChores(sortOrder, 'name')}>Sort by Name</button>
+                        <button onClick={() => sortChores(sortOrder, 'days')}>Sort by Days</button>
+                        <button onClick={() => sortChores(sortOrder, 'startDate')}>Sort by start of timer</button>
+                        <button onClick={() => sortChores(sortOrder, 'endDate')}>Sort by remaining hours</button>
+                    </div>
+                </div>
+            }
+        </div>
     );
 };
 

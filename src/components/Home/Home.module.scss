@@ -6,4 +6,10 @@
     flex-direction: column;
     flex-wrap: wrap;
     width: 100%;
+
+    .sorting {
+        @include flexCenterContainer(map-get($colors, "primary"));
+        justify-content: space-between;
+        gap: $base-gap;
+    }
 }

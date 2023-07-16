@@ -2,8 +2,11 @@ import { memo, useContext, useEffect, useState } from "react";
 
 import { ChoreContext } from "../../contexts/ChoreContext";
 
+import style from './Search.module.scss';
+
 const Search = () => {
     const [searchPhrase, setSearchPhrase] = useState('');
+    const [showSearchbar, setShowSearchbar] = useState(true);
 
     const { displayChores, chores } = useContext(ChoreContext);
 
@@ -12,6 +15,11 @@ const Search = () => {
             searchChores(searchPhrase);
         }
     }, [searchPhrase, chores]);
+
+    // Toggle the searchbar
+    const toggleSearch = () => {
+        setShowSearchbar(!showSearchbar);
+    };
 
     // On entering search param
     const onSearchInput = (e: any) => {
@@ -37,20 +45,26 @@ const Search = () => {
     };
 
     return (
-        <section>
-            <div>
-                <form action="post">
-                    <input
-                        type="text"
-                        placeholder="Search by chore name"
-                        value={searchPhrase}
-                        onChange={onSearchInput}
-                    />
+        <div className={style.search}>
 
-                    <button onClick={clear}>Clear</button>
-                </form>
-            </div>
-        </section>
+            {showSearchbar
+                ? <div>
+                    <button className={`${style.addBtn} ${style.animate}`} onClick={() => toggleSearch()}>Close</button>
+                    <form className={style.searchbar} action="post">
+                        <input
+                            type="text"
+                            placeholder="Search by chore name"
+                            value={searchPhrase}
+                            onChange={onSearchInput}
+                        />
+
+                        <button onClick={clear}>Clear</button>
+                    </form>
+                </div>
+                : <button className={`${style.addBtn} ${style.animate}`} onClick={() => toggleSearch()}>Search</button>
+            }
+
+        </div>
     );
 };
 
