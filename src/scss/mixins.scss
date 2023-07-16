@@ -1,0 +1,7 @@
+// Containers
+@mixin flexCenterContainer($bg-color: #e2e2e2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $bg-color;
+}

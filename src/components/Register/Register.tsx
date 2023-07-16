@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import { AuthContext } from '../../contexts/AuthContext';
 
@@ -78,6 +79,7 @@ export const Register = () => {
                 {/* Submit Button */}
                 <div>
                     <input type="submit" name='submit' value="Register" disabled={disabled} />
+                    <li><Link to='/'>Back</Link></li>
                 </div>
             </form>
         </main>

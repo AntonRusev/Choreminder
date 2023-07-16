@@ -1,0 +1,22 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.header {
+    @include flexCenterContainer(map-get($colors, "primary"));
+    width: 100%;
+
+    a {
+        text-decoration: none;
+        color: map-get($colors, "secondary");
+    }
+
+    .nav {
+        width: 100%;
+
+        .list {
+            display: flex;
+            justify-content: space-evenly;
+        }
+    }
+}
+

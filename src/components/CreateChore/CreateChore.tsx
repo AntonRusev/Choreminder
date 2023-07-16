@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import { memo, useContext } from "react";
 
 import { ChoreContext } from "../../contexts/ChoreContext";
 
 import { useForm } from '../../hooks/useForm';
 
-export const CreateChore = () => {
+const CreateChore = () => {
     const { onChoreCreate } = useContext(ChoreContext);
 
     const { onSubmit, formValues, formErrors, disabled, formValueChangeHandler, validateForm } = useForm({
@@ -66,3 +66,5 @@ export const CreateChore = () => {
         </main>
     );
 };
+
+export default memo(CreateChore);

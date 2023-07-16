@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import { Header } from './components/Header/Header';
-import { Home } from './components/Home/Home';
+import Home from './components/Home/Home';
 import { Footer } from './components/Footer/Footer';
 
 import { AuthProvider } from './contexts/AuthContext';
@@ -14,7 +14,6 @@ import { Logout } from './components/Logout/Logout';
 import { ConfirmProvider } from './contexts/ConfirmContext';
 
 function App() {
-
     return (
         <>
             <AuthProvider>

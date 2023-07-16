@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
+import { memo, useContext, useState } from "react";
 
 import { ChoreContext } from "../../contexts/ChoreContext";
 import { dateSort, daysSort } from "../../utils/sorters";
 
-export const SortChores = () => {
+const SortChores = () => {
     const [sortOrder, setSortOrder] = useState('incremental');
     const { chores, setChores } = useContext(ChoreContext);
 
@@ -45,3 +45,5 @@ export const SortChores = () => {
         </>
     );
 };
+
+export default memo(SortChores);

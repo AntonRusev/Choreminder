@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { memo, useContext } from "react";
 
 import { ConfirmContext } from "../../contexts/ConfirmContext";
 
@@ -6,7 +6,7 @@ import { useProgress } from "../../hooks/useProgress";
 
 import * as css from './ChoreItem.module.scss';
 
-export const ChoreItem = ({
+const ChoreItem = ({
     _id,
     name,
     days,
@@ -45,8 +45,8 @@ export const ChoreItem = ({
                         <label htmlFor="chore">{name}: </label>
                         <progress id="chore" className={css.progressbar} value={hoursRemaining} max={days * 24}></progress>
 
-                        <button onClick={() => onActivateConfirm({ action: "reset", _id, name, img, days, isActive })}>Reset</button>
-                        <button onClick={() => onActivateConfirm({ action: "stop", _id, name, img, days, isActive: false })}>Stop</button>
+                        <button onClick={() => onActivateConfirm({ action: "reset", _id, name, days, isActive })}>Reset</button>
+                        <button onClick={() => onActivateConfirm({ action: "stop", _id, name, days, isActive: false })}>Stop</button>
                         <button onClick={() => onActivateConfirm({ action: "delete", _id, })}>Delete</button>
                     </div>
                 </>
@@ -59,3 +59,5 @@ export const ChoreItem = ({
         </li>
     );
 };
+
+export default memo(ChoreItem);

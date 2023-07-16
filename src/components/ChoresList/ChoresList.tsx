@@ -1,14 +1,14 @@
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 
 import { ChoreContext } from '../../contexts/ChoreContext';
 import { ConfirmContext } from '../../contexts/ConfirmContext';
 
-import { ChoreItem } from '../ChoreItem/ChoreItem';
+import ChoreItem from '../ChoreItem/ChoreItem';
 import { Confirm } from '../Confirm/Confirm';
 
 import * as css from './ChoresList.module.scss';
 
-export const ChoreList = () => {
+const ChoreList = () => {
     const { displayedChores } = useContext(ChoreContext);
     const { isConfirmActive } = useContext(ConfirmContext);
 
@@ -33,3 +33,5 @@ export const ChoreList = () => {
         </>
     );
 };
+
+export default memo(ChoreList);

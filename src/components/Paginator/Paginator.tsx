@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { memo, useContext, useEffect, useState } from "react";
 
 import { ChoreContext } from "../../contexts/ChoreContext";
 
-export const Paginator = () => {
+const Paginator = () => {
     const [page, setPage] = useState({
         currentPage: 0,
         resultsShown: 5,
@@ -60,3 +60,5 @@ export const Paginator = () => {
         </section>
     );
 };
+
+export default memo(Paginator);

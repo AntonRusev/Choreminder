@@ -1,0 +1,42 @@
+// theme colors
+$colors: (
+    "primary": #faa931,
+    "primary-light": #fdc22f,
+    "primary-dark": #f57736,
+    "secondary": #ed1c24,
+    "light-blue": #62cbe7,
+    "light-green": #5fbd5a,
+    "gray": #cccccc
+);
+
+// spacing
+$base-padding: 2rem;
+$base-margin: 2rem;
+
+// borders
+$base-border-thickness: 1px;
+$base-border-radius: 20px;
+
+// @import "./variables.scss";
+
+// .test {
+//     @include flexCenterContainer(green);
+
+//     p {
+//         color: map-get($colors, "primary");
+//         &:hover {
+//         color: map-get($colors, "secondary");
+//         }
+//         &:last-child {
+//         color: white;
+//         }
+//         &:nth-child(2) {
+//         color: black;
+//         }
+//     }
+// }
+
+// .test2 {
+//     @extend .test;
+//     padding: $base-padding;
+// }

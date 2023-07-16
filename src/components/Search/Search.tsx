@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { memo, useContext, useEffect, useState } from "react";
 
 import { ChoreContext } from "../../contexts/ChoreContext";
 
-export const Search = () => {
+const Search = () => {
     const [searchPhrase, setSearchPhrase] = useState('');
 
     const { displayChores, chores } = useContext(ChoreContext);
@@ -53,3 +53,5 @@ export const Search = () => {
         </section>
     );
 };
+
+export default memo(Search);
