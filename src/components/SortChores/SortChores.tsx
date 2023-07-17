@@ -47,7 +47,7 @@ const SortChores = () => {
     return (
         <div className={`${style.sort}`}>
 
-            {!showSortOptions
+            {showSortOptions
                 ? <div className={`${style.sortTwo}`}>
                     <button onClick={() => toggleSort()}>Close</button>
                     <div className={`${style.sortingOptions}`}>

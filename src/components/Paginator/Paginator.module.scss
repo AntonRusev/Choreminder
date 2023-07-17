@@ -2,5 +2,5 @@
 @import '../../scss/mixins.scss';
 
 .paginator {
-    @include flexCenterContainer(map-get($colors, "primary"));
+    @include flexCenterContainer(map-get($colors, "transparent"));
 }

@@ -2,31 +2,39 @@
 @import '../../scss/mixins.scss';
 
 .chore {
-    @include flexCenterContainer(map-get($colors, "primary-light"));
+    @include flexCenterContainer(map-get($colors, "transparent"));
+    @include basicButton;
+    @include crudButton;
     flex-direction: column;
     gap: $base-gap;
     width: 100%;
     margin: $base-margin 0;
     padding: $base-padding 0;
     color: map-get($colors, "black");
+    backdrop-filter: blur(15px);
+    border-radius: $base-border-radius;
+    border: 1px solid rgba(255, 255, 255, .25);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+
 
     article {
         padding: $base-padding
     }
 
     .progressbar {
-        @include flexCenterContainer(map-get($colors, "primary-light"));
+        @include flexCenterContainer(map-get($colors, "transparent"));
         flex-direction: column;
         gap: $base-gap;
         width: 100%;
 
         progress {
             transform: rotate(180deg);
-            background-color: map-get($colors, "white");
+            background-color: map-get($colors, "gray");
             border-radius: $base-border-radius;
-            border: 1px solid map-get($colors, "primary-light");
+            border: 1px solid map-get($colors, "transparent");
             width: 80%;
             height: 42px;
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
         }
         
         progress::-webkit-progress-bar {

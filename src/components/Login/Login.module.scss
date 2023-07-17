@@ -1,0 +1,11 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.login {
+    @include flexCenterContainer(map-get($colors, "transparent"));
+
+    .btnHolder {
+        @include flexCenterContainer(map-get($colors, "transparent"));
+        gap: $base-gap;
+    }
+}

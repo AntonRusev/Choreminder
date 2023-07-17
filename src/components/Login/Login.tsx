@@ -2,8 +2,9 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import { AuthContext } from '../../contexts/AuthContext';
-
 import { useForm } from '../../hooks/useForm';
+
+import style from './Login.module.scss';
 
 export const Login = () => {
     const { onAuthSubmit } = useContext(AuthContext);
@@ -14,7 +15,7 @@ export const Login = () => {
     }, onAuthSubmit);
 
     return (
-        <main>
+        <main className={style.login}>
             <form action="post" onSubmit={e => onSubmit(e)}>
 
                 {/* Email */}
@@ -57,10 +58,13 @@ export const Login = () => {
                 </div>
 
                 {/* Submit Button */}
-                <div>
+                <div className={style.btnHolder}>
                     <input type="submit" name='submit' value="Login" disabled={disabled} />
-                    <li><Link to='/'>Back</Link></li>
+                    <Link to='/'>Cancel</Link>
                 </div>
+
+                <span>Don't have account yet? </span>
+                <Link to='/register'>Register</Link>
             </form>
         </main>
     );

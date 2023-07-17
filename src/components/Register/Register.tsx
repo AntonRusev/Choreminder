@@ -2,8 +2,9 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import { AuthContext } from '../../contexts/AuthContext';
-
 import { useForm } from '../../hooks/useForm';
+
+import style from './Register.module.scss';
 
 export const Register = () => {
     const { onAuthSubmit } = useContext(AuthContext);
@@ -16,7 +17,7 @@ export const Register = () => {
     }, onAuthSubmit);
 
     return (
-        <main>
+        <main className={style.register}>
             <form action="post" onSubmit={e => onSubmit(e)}>
 
                 {/* Email */}
@@ -77,10 +78,13 @@ export const Register = () => {
                 </div>
 
                 {/* Submit Button */}
-                <div>
+                <div className={style.btnHolder}>
                     <input type="submit" name='submit' value="Register" disabled={disabled} />
-                    <li><Link to='/'>Back</Link></li>
+                    <Link to='/'>Cancel</Link>
                 </div>
+
+                <span>Already have an account? </span>
+                <Link to='/login'>Login</Link>
             </form>
         </main>
     );

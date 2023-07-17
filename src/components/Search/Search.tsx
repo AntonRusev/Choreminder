@@ -6,7 +6,7 @@ import style from './Search.module.scss';
 
 const Search = () => {
     const [searchPhrase, setSearchPhrase] = useState('');
-    const [showSearchbar, setShowSearchbar] = useState(true);
+    const [showSearchbar, setShowSearchbar] = useState(false);
 
     const { displayChores, chores } = useContext(ChoreContext);
 

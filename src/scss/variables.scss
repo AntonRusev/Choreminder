@@ -9,6 +9,7 @@ $colors: (
     "gray": #cccccc,
     "white": #fff,
     "black": #000000,
+    "transparent": #ffffff00,
 );
 
 // spacing
@@ -18,7 +19,10 @@ $base-gap: 0.5rem;
 
 // borders
 $base-border-thickness: 1px;
-$base-border-radius: 12px;
+$base-border-radius: 20px;
+
+//font 
+$base-font-size: 1rem;
 
 // @import "./variables.scss";
 

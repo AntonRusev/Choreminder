@@ -2,13 +2,17 @@
 @import '../../scss/mixins.scss';
 
 .home {
-    @include flexCenterContainer(map-get($colors, "primary"));
+    @include flexCenterContainer(map-get($colors, "transparent"));
     flex-direction: column;
     flex-wrap: wrap;
     width: 100%;
 
+    .holder {
+        width: 80%;
+    }
+
     .sorting {
-        @include flexCenterContainer(map-get($colors, "primary"));
+        @include flexCenterContainer(map-get($colors, "transparent"));
         justify-content: space-between;
         gap: $base-gap;
     }

@@ -1,7 +1,113 @@
+@import './variables.scss';
+
 // Containers
-@mixin flexCenterContainer($bg-color: #e2e2e2) {
+@mixin flexCenterContainer($bg-color: transparent) {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: $bg-color;
+}
+
+// Buttons
+@mixin btnHolder {
+    .btnHolder {
+        @include flexCenterContainer(map-get($colors, "transparent"));
+        padding: $base-padding;
+        gap: $base-gap * 5;
+    }
+}
+
+@mixin basicButton {
+    .basicBtn {
+        padding: 17px 40px;
+        border-radius: 50px;
+        border: 0;
+        background-color: white;
+        box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-size: 15px;
+        transition: all .5s ease;
+       }
+       
+       .basicBtn:hover {
+        letter-spacing: 3px;
+        background-color: hsl(261deg 80% 48%);
+        color: hsl(0, 0%, 100%);
+        box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+       }
+       
+       .basicBtn:active {
+        letter-spacing: 3px;
+        background-color: hsl(261deg 80% 48%);
+        color: hsl(0, 0%, 100%);
+        box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+        transform: translateY(10px);
+        transition: 100ms;
+       }
+}
+
+@mixin crudButton {
+    .crudBtn {
+        position: relative;
+        color: map-get($colors, "primary-dark");
+        padding: $base-padding / 5;
+        margin: 10px;
+        border-radius: $base-border-radius * 2;
+        // width: 150px;
+        // height: 50px;
+        font-size: $base-font-size * 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // flex-direction: column;
+        // box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+      
+      .tooltip {
+        position: absolute;
+        top: 0;
+        font-size: $base-font-size * 1.5;
+        background: map-get($colors, "primary-dark");
+        color: map-get($colors, "primary-dark");
+        padding: 5px 8px;
+        border-radius: 5px;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+      
+      .tooltip::before {
+        position: absolute;
+        content: "";
+        height: 8px;
+        width: 8px;
+        background: #ffffff;
+        bottom: -3px;
+        left: 50%;
+        transform: translate(-50%) rotate(45deg);
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+      
+      .crudBtn:hover .tooltip {
+        top: -45px;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+      
+      svg:hover span,
+      svg:hover .tooltip {
+        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+      }
+      
+      .crudBtn:hover,
+      .crudBtn:hover .tooltip,
+      .crudBtn:hover .tooltip::before {
+        // background: linear-gradient(320deg, rgb(3, 77, 146), rgb(0, 60, 255));
+        color: #ffffff;
+      }
 }

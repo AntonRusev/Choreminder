@@ -41,22 +41,43 @@ const ChoreItem = ({
                         <p>Progress: {progress?.toFixed(2)} </p>
                         <p>Active: {isActive} </p>
                     </article>
-                    
+
                     <div className={style.progressbar}>
                         <label htmlFor="chore">{name}: </label>
                         <progress id="chore" value={hoursRemaining} max={days * 24}></progress>
 
-                        <div className={style.btns}>
-                            <button onClick={() => onActivateConfirm({ action: "reset", _id, name, days, isActive })}>Reset</button>
-                            <button onClick={() => onActivateConfirm({ action: "stop", _id, name, days, isActive: false })}>Stop</button>
-                            <button onClick={() => onActivateConfirm({ action: "delete", _id, })}>Delete</button>
+                        <div className={style.btnHolder}>
+                            {/* Reset Button */}
+                            <div onClick={() => onActivateConfirm({ action: "reset", _id, name, days, isActive })} className={style.crudBtn}>
+                                <span className={style.tooltip}>Reset</span>
+                                <span>
+                                    <i className="fa-solid fa-clock-rotate-left"></i>
+                                </span>
+                            </div>
+                            {/* Stop Button */}
+                            <div onClick={() => onActivateConfirm({ action: "stop", _id, name, days, isActive: false })} className={style.crudBtn}>
+                                <span className={style.tooltip}>Stop</span>
+                                <span>
+                                    <i className="fa-solid fa-circle-stop"></i>
+                                </span>
+                            </div>
+                            {/* Delete Button */}
+                            <div onClick={() => onActivateConfirm({ action: "delete", _id, })} className={style.crudBtn}>
+                                <span className={style.tooltip}>Delete</span>
+                                <span>
+                                    <i className="fa-solid fa-trash-can"></i>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </>
                 :
                 <>
                     <p>The "{name}" chore is not active.</p>
-                    <button onClick={() => onActivateConfirm({ action: "activate", _id, name, img, days, isActive: true })}>Activate</button>
+                    <button
+                        onClick={() => onActivateConfirm({ action: "activate", _id, name, img, days, isActive: true })}
+                        className={style.basicBtn}
+                    >Activate</button>
                 </>
             }
         </li>

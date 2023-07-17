@@ -2,7 +2,7 @@
 @import '../../scss/mixins.scss';
 
 .footer {
-    @include flexCenterContainer(map-get($colors, "primary"));
+    @include flexCenterContainer(map-get($colors, "transparent"));
     padding: $base-padding;
     color: map-get($colors, "secondary");
 }

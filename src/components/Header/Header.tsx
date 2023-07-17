@@ -10,9 +10,9 @@ export const Header = () => {
 
     return (
         <header className={style.header}>
+            <Link to='/'><h1>ChoreMinder</h1></Link>
             <nav className={style.nav}>
                 <ul className={style.list}>
-                    <li><Link to='/'><h1>ChoreMinder</h1></Link></li>
                     {auth._id ? <li><Link to='/logout'>LOGOUT</Link></li> : ''}
                 </ul>
             </nav>

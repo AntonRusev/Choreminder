@@ -2,12 +2,12 @@
 @import '../../scss/mixins.scss';
 
 .create {
-    @include flexCenterContainer(map-get($colors, "primary"));
+    @include flexCenterContainer(map-get($colors, "transparent"));
     margin: $base-margin;
     height: 10rem;
 
     .form {
-        @include flexCenterContainer(map-get($colors, "primary"));
+        @include flexCenterContainer(map-get($colors, "transparent"));
         flex-direction: column;
         gap: $base-gap;
         width: 14rem;
@@ -18,7 +18,7 @@
     .addBtn {
         width: 5rem;
         height: 3rem;
-        background-color: map-get($colors, "primary");
+        background-color: map-get($colors, "transparent");
         border: solid 2px black;
 
         &:hover {

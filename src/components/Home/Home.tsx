@@ -18,7 +18,7 @@ const Home = () => {
         <main className={style.home}>
             {auth._id
                 ?
-                <section>
+                <section className={style.holder}>
                     <div className={style.sorting}>
                         <Search />
                         <SortChores />
