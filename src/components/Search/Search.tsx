@@ -48,8 +48,18 @@ const Search = () => {
         <div className={style.search}>
 
             {showSearchbar
-                ? <div>
-                    <button onClick={() => toggleSearch()}>Close</button>
+                ?
+                <div>
+                    <div
+                        onClick={() => toggleSearch()}
+                        className={style.crudBtn}
+                    >
+                        <span className={style.tooltip}>Close</span>
+                        <span>
+                            <i className="fa-regular fa-circle-xmark"></i>
+                        </span>
+                    </div>
+
                     <form className={style.searchbar} action="post">
                         <input
                             type="text"
@@ -61,7 +71,16 @@ const Search = () => {
                         <button onClick={clear}>Clear</button>
                     </form>
                 </div>
-                : <button className={`${style.addBtn} ${style.animate}`} onClick={() => toggleSearch()}>Search</button>
+                :
+                <div
+                    onClick={() => toggleSearch()}
+                    className={style.crudBtn}
+                >
+                    <span className={style.tooltip}>Search</span>
+                    <span>
+                        <i className="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                </div>
             }
 
         </div>

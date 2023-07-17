@@ -48,21 +48,32 @@ const ChoreItem = ({
 
                         <div className={style.btnHolder}>
                             {/* Reset Button */}
-                            <div onClick={() => onActivateConfirm({ action: "reset", _id, name, days, isActive })} className={style.crudBtn}>
+                            <div
+                                onClick={() => onActivateConfirm({ action: "reset", _id, name, days, isActive })}
+                                className={style.crudBtn}
+                            >
                                 <span className={style.tooltip}>Reset</span>
                                 <span>
                                     <i className="fa-solid fa-clock-rotate-left"></i>
                                 </span>
                             </div>
+
                             {/* Stop Button */}
-                            <div onClick={() => onActivateConfirm({ action: "stop", _id, name, days, isActive: false })} className={style.crudBtn}>
+                            <div
+                                onClick={() => onActivateConfirm({ action: "stop", _id, name, days, isActive: false })}
+                                className={style.crudBtn}
+                            >
                                 <span className={style.tooltip}>Stop</span>
                                 <span>
                                     <i className="fa-solid fa-circle-stop"></i>
                                 </span>
                             </div>
+
                             {/* Delete Button */}
-                            <div onClick={() => onActivateConfirm({ action: "delete", _id, })} className={style.crudBtn}>
+                            <div
+                                onClick={() => onActivateConfirm({ action: "delete", _id, })}
+                                className={style.crudBtn}
+                            >
                                 <span className={style.tooltip}>Delete</span>
                                 <span>
                                     <i className="fa-solid fa-trash-can"></i>
@@ -74,10 +85,16 @@ const ChoreItem = ({
                 :
                 <>
                     <p>The "{name}" chore is not active.</p>
-                    <button
+                    {/* Activate Button */}
+                    <div
                         onClick={() => onActivateConfirm({ action: "activate", _id, name, img, days, isActive: true })}
-                        className={style.basicBtn}
-                    >Activate</button>
+                        className={style.crudBtn}
+                    >
+                        <span className={style.tooltip}>Activate</span>
+                        <span>
+                            <i className="fa-solid fa-circle-play"></i>
+                        </span>
+                    </div>
                 </>
             }
         </li>

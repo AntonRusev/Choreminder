@@ -3,4 +3,5 @@
 
 .paginator {
     @include flexCenterContainer(map-get($colors, "transparent"));
+    @include crudButton(map-get($colors, "primary-dark"));
 }

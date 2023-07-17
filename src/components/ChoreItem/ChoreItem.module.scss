@@ -3,6 +3,7 @@
 
 .chore {
     @include flexCenterContainer(map-get($colors, "transparent"));
+    @include btnHolder;
     @include basicButton;
     @include crudButton;
     flex-direction: column;

@@ -4,7 +4,7 @@
 .header {
     @include flexCenterContainer(map-get($colors, "transparent"));
     flex-direction: column;
-    width: 100%;
+    margin: $base-margin;
 
     a {
         text-decoration: none;
@@ -22,7 +22,8 @@
     }
 
     h1 {
-        font-size: 2rem;
+        font-family: 'Kablammo', cursive;
+        font-size: $base-font-size * 3;
     }
 }
 

@@ -28,7 +28,7 @@ const Paginator = () => {
     const changePage = (e: any) => {
         e.preventDefault();
 
-        const direction = e.target.name;
+        const direction = e.target.id;
 
         if (direction === 'next') {
             setPage({ ...page, currentPage: ++page.currentPage, resultsShown: page.resultsShown });
@@ -47,19 +47,45 @@ const Paginator = () => {
 
     return (
         <section className={style.paginator}>
+
+
+
+
             <div>
                 {page.currentPage > 0
-                    ? <button name="back" onClick={changePage}> -Back </button>
-                    : <p></p>
+
+                    ?
+                    < div
+                        onClick={changePage}
+                        className={style.crudBtn}
+                    >
+                        <span className={style.tooltip}>Back</span>
+                        <span>
+                            <i id="back" className="fa-solid fa-chevron-left"></i>
+                        </span>
+                    </div>
+                    :
+                    <p></p>
                 }
+
                 <span> Page: {page?.currentPage + 1} </span>
 
                 {page.currentPage < page.maxPages - 1
-                    ? <button name="next" onClick={changePage}> Next- </button>
-                    : <p></p>
+                    ?
+                    < div
+                        onClick={changePage}
+                        className={style.crudBtn}
+                    >
+                        <span className={style.tooltip}>Next</span>
+                        <span>
+                            <i id="next" className="fa-solid fa-chevron-right"></i>
+                        </span>
+                    </div>
+                    :
+                    <p></p>
                 }
             </div>
-        </section>
+        </section >
     );
 };
 

@@ -1,8 +1,19 @@
 @import '../../scss/variables.scss';
 @import '../../scss/mixins.scss';
 
+.search {
+    @include crudButton(map-get($colors, "primary"));
+
+    .crudBtn {
+        margin: 0;
+        padding: 0;
+    }
+}
+
 .searchbar {
     display: flex;
     position: absolute;
     z-index: 1;
+    margin: 0;
+    padding: 0;
 }

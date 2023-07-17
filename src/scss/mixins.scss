@@ -8,15 +8,15 @@
     background-color: $bg-color;
 }
 
-// Buttons
 @mixin btnHolder {
     .btnHolder {
         @include flexCenterContainer(map-get($colors, "transparent"));
         padding: $base-padding;
-        gap: $base-gap * 5;
+        gap: $base-gap * 2;
     }
 }
 
+// Buttons
 @mixin basicButton {
     .basicBtn {
         padding: 17px 40px;
@@ -47,21 +47,17 @@
        }
 }
 
-@mixin crudButton {
+@mixin crudButton($prim-color: map-get($colors, "primary-dark")) {
     .crudBtn {
         position: relative;
-        color: map-get($colors, "primary-dark");
+        color: $prim-color;
         padding: $base-padding / 5;
         margin: 10px;
         border-radius: $base-border-radius * 2;
-        // width: 150px;
-        // height: 50px;
         font-size: $base-font-size * 3;
         display: flex;
         justify-content: center;
         align-items: center;
-        // flex-direction: column;
-        // box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
         cursor: pointer;
         transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       }
@@ -70,8 +66,8 @@
         position: absolute;
         top: 0;
         font-size: $base-font-size * 1.5;
-        background: map-get($colors, "primary-dark");
-        color: map-get($colors, "primary-dark");
+        background: $prim-color;
+        color: $prim-color;
         padding: 5px 8px;
         border-radius: 5px;
         box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
@@ -83,8 +79,8 @@
       .tooltip::before {
         position: absolute;
         content: "";
-        height: 8px;
-        width: 8px;
+        // height: 8px;
+        // width: 8px;
         background: #ffffff;
         bottom: -3px;
         left: 50%;
@@ -107,7 +103,6 @@
       .crudBtn:hover,
       .crudBtn:hover .tooltip,
       .crudBtn:hover .tooltip::before {
-        // background: linear-gradient(320deg, rgb(3, 77, 146), rgb(0, 60, 255));
         color: #ffffff;
       }
 }

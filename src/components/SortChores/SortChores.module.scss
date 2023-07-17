@@ -2,14 +2,21 @@
 @import '../../scss/mixins.scss';
 
 .sort {
+    @include crudButton(map-get($colors, "primary"));
     display: flex;
     flex-direction: column;
     align-items: end;
+
+    .crudBtn {
+        margin: 0;
+        padding: 0;
+
+    }
 }
 
 .sortTwo {
     // FIX MARGIN TOP
-    margin-top: -10px;
+    margin-top: -25px;
     display: flex;
     flex-direction: column;
     align-items: end;

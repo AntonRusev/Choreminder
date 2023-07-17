@@ -48,8 +48,17 @@ const SortChores = () => {
         <div className={`${style.sort}`}>
 
             {showSortOptions
-                ? <div className={`${style.sortTwo}`}>
-                    <button onClick={() => toggleSort()}>Close</button>
+                ?
+                <div className={`${style.sortTwo}`}>
+                    <div
+                        onClick={() => toggleSort()}
+                        className={style.crudBtn}
+                    >
+                        <span className={style.tooltip}>Close</span>
+                        <span>
+                            <i className="fa-regular fa-circle-xmark"></i>
+                        </span>
+                    </div>
                     <div className={`${style.sortingOptions}`}>
                         <button onClick={() => sortChores(sortOrder, 'name')}>Sort by Name</button>
                         <button onClick={() => sortChores(sortOrder, 'days')}>Sort by Days</button>
@@ -57,10 +66,19 @@ const SortChores = () => {
                         <button onClick={() => sortChores(sortOrder, 'endDate')}>Sort by remaining hours</button>
                     </div>
                 </div>
-                : <button onClick={() => toggleSort()}>Sort by...</button>
+                :
+                <div
+                    onClick={() => toggleSort()}
+                    className={style.crudBtn}
+                >
+                    <span className={style.tooltip}>Sort by...</span>
+                    <span>
+                        <i className="fa-solid fa-sort"></i>
+                    </span>
+                </div>
             }
 
-        </div>
+        </div >
     );
 };
 
