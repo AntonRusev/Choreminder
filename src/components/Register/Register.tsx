@@ -38,7 +38,7 @@ export const Register = () => {
                     <label htmlFor="email">Email:</label>
 
                     {/* Validation Error */}
-                    <p>
+                    <p className={style.validate}>
                         {(formErrors.email) ? `${formErrors.email}` : ''}
                     </p>
                 </div>
@@ -61,7 +61,7 @@ export const Register = () => {
                     <label htmlFor="password">Password:</label>
 
                     {/* Validation Error */}
-                    <p>
+                    <p className={style.validate}>
                         {(formErrors.password) ? `${formErrors.password}` : ''}
                     </p>
                 </div>
@@ -84,7 +84,7 @@ export const Register = () => {
                     <label htmlFor="rePass">Repeat password:</label>
 
                     {/* Validation Error */}
-                    <p>
+                    <p className={style.validate}>
                         {(formErrors.rePass) ? `${formErrors.rePass}` : ''}
                     </p>
                 </div>
@@ -102,7 +102,7 @@ export const Register = () => {
                     <Link className={style.basicBtn} to='/'>Cancel</Link>
                 </div>
 
-                <span>Already have an account? </span>
+                <span>Already have an account?</span>
                 <Link to='/login'>Login</Link>
             </form>
         </main>

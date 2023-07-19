@@ -10,7 +10,11 @@
     .crudBtn {
         margin: 0;
         padding: 0;
+    }
 
+    // Adjusting tooltip of the Add button
+    .crudBtn:hover .tooltip {
+        top: -60px;
     }
 }
 
