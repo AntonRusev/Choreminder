@@ -55,7 +55,7 @@ const Paginator = () => {
                         onClick={changePage}
                         className={style.crudBtn}
                     >
-                        <span className={style.tooltip}>Back</span>
+                        <span className={style.tooltip}>Previous</span>
                         <span>
                             <i id="back" className="fa-solid fa-chevron-left"></i>
                         </span>

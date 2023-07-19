@@ -60,15 +60,21 @@ const Search = () => {
                         </span>
                     </div>
 
-                    <form className={style.searchbar} action="post">
+                    <form className={style.searchForm} action="post">
                         <input
                             type="text"
+                            className={style.searchbar}
                             placeholder="Search by chore name"
                             value={searchPhrase}
                             onChange={onSearchInput}
                         />
 
-                        <button onClick={clear}>Clear</button>
+                        <button
+                            className={style.searchBtn}
+                            onClick={clear}
+                        >
+                            Clear
+                        </button>
                     </form>
                 </div>
                 :

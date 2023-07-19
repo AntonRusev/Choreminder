@@ -27,7 +27,10 @@ const CreateChore = () => {
                     ?
                     <form
                         action="post"
-                        onSubmit={e => onSubmit(e)}
+                        onSubmit={(e) => {
+                            onSubmit(e);
+                            toggleCreate();
+                        }}
                     >
 
                         {/* Chore Name */}

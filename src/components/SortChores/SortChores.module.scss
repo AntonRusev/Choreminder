@@ -16,20 +16,38 @@
     .crudBtn:hover .tooltip {
         top: -60px;
     }
+
+    .sortTwo {
+        // FIX MARGIN TOP
+        margin-top: -25px;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        position: absolute;
+        z-index: 1;
+        width: 50rem;
+
+        .sortingOptions {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            gap: 1px;
+
+            button {
+                @include flexCenterContainer(map-get($colors, "primary"));
+                border-color: map-get($colors, "transparent");
+                border-radius: $base-border-radius * 2;
+                color: map-get($colors, "white");
+                font-family: 'Yatra One', cursive;
+                font-size: calc($base-font-size * 1.3);
+                letter-spacing: 2px;
+                margin: 0;
+                padding: calc($base-padding / 3) ($base-padding);
+                cursor: pointer;
+            }
+        }
+    }
 }
 
-.sortTwo {
-    // FIX MARGIN TOP
-    margin-top: -25px;
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    position: absolute;
-    z-index: 1;
-}
 
-.sortingOptions {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-}
+
