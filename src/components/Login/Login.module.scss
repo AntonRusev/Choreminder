@@ -3,9 +3,19 @@
 
 .login {
     @include flexCenterContainer(map-get($colors, "transparent"));
+    @include inputField(map-get($colors, "primary-dark"));
+    min-height: 80vh;
 
-    .btnHolder {
+    form {
         @include flexCenterContainer(map-get($colors, "transparent"));
-        gap: $base-gap;
+        flex-direction: column;
+        width: 20%;
+
+        .btnHolder {
+            @include flexCenterContainer(map-get($colors, "transparent"));
+            @include basicButton;
+            gap: $base-gap;
+            margin: calc($base-margin / 1.5);
+        }
     }
 }

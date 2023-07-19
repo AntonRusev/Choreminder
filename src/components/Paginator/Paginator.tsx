@@ -47,15 +47,11 @@ const Paginator = () => {
 
     return (
         <section className={style.paginator}>
-
-
-
-
-            <div>
+            <div className={style.btnHolder}>
                 {page.currentPage > 0
 
                     ?
-                    < div
+                    <div
                         onClick={changePage}
                         className={style.crudBtn}
                     >
@@ -68,11 +64,11 @@ const Paginator = () => {
                     <p></p>
                 }
 
-                <span> Page: {page?.currentPage + 1} </span>
+                <span className={style.pageNumber}> Page: {page?.currentPage + 1} </span>
 
                 {page.currentPage < page.maxPages - 1
                     ?
-                    < div
+                    <div
                         onClick={changePage}
                         className={style.crudBtn}
                     >

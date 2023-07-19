@@ -19,52 +19,67 @@ export const Login = () => {
             <form action="post" onSubmit={e => onSubmit(e)}>
 
                 {/* Email */}
-                <div>
-                    <label htmlFor="email">Email:</label>
+                <div className={style.inputGroup}>
                     <input
                         type="text"
                         id="email"
                         name="email"
-                        placeholder="Test"
+                        className={
+                            formValues.email.length > 0
+                                ? `${style.active}`
+                                : ''
+                        }
                         value={formValues.email}
                         onChange={formValueChangeHandler}
                         onBlur={validateForm}
                     />
+                    <label htmlFor="email">Email:</label>
 
                     {/* Validation Error */}
-                    <p>
+                    <p className={style.validate}>
                         {(formErrors.email) ? `${formErrors.email}` : ''}
                     </p>
                 </div>
 
 
                 {/* Password */}
-                <div>
-                    <label htmlFor="password">Password:</label>
+                <div className={style.inputGroup}>
                     <input
                         type="password"
                         id="password"
                         name="password"
-                        placeholder="Test"
+                        className={
+                            formValues.password.length > 0
+                                ? `${style.active}`
+                                : ''
+                        }
                         value={formValues.password}
                         onChange={formValueChangeHandler}
                         onBlur={validateForm}
                     />
+                    <label htmlFor="password">Password:</label>
 
                     {/* Validation Error */}
-                    <p>
+                    <p className={style.validate}>
                         {(formErrors.password) ? `${formErrors.password}` : ''}
                     </p>
                 </div>
 
                 {/* Submit Button */}
                 <div className={style.btnHolder}>
-                    <input type="submit" name='submit' value="Login" disabled={disabled} />
-                    <Link to='/'>Cancel</Link>
+                    <input 
+                    type="submit" 
+                    name='submit' 
+                    className={style.basicBtn}
+                    value="Login" 
+                    disabled={disabled} 
+                    />
+
+                    <Link className={style.basicBtn} to='/'>Cancel</Link>
                 </div>
 
-                <span>Don't have account yet? </span>
-                <Link to='/register'>Register</Link>
+                <span>Don't have an account?</span>
+                <Link to='/register'>Sign up</Link>
             </form>
         </main>
     );

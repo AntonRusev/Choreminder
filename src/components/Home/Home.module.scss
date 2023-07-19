@@ -15,5 +15,7 @@
         @include flexCenterContainer(map-get($colors, "transparent"));
         justify-content: space-between;
         gap: $base-gap;
+        padding: $base-padding;
+        margin: $base-margin;
     }
 }

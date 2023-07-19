@@ -21,17 +21,21 @@ export const Register = () => {
             <form action="post" onSubmit={e => onSubmit(e)}>
 
                 {/* Email */}
-                <div>
-                    <label htmlFor="email">Email:</label>
+                <div className={style.inputGroup}>
                     <input
                         type="text"
                         id="email"
                         name="email"
-                        placeholder="Test"
+                        className={
+                            formValues.email.length > 0
+                                ? `${style.active}`
+                                : ''
+                        }
                         value={formValues.email}
                         onChange={formValueChangeHandler}
                         onBlur={validateForm}
                     />
+                    <label htmlFor="email">Email:</label>
 
                     {/* Validation Error */}
                     <p>
@@ -40,17 +44,21 @@ export const Register = () => {
                 </div>
 
                 {/* Password */}
-                <div>
-                    <label htmlFor="password">Password:</label>
+                <div className={style.inputGroup}>
                     <input
                         type="password"
                         id="password"
                         name="password"
-                        placeholder="Test"
+                        className={
+                            formValues.password.length > 0
+                                ? `${style.active}`
+                                : ''
+                        }
                         value={formValues.password}
                         onChange={formValueChangeHandler}
                         onBlur={validateForm}
                     />
+                    <label htmlFor="password">Password:</label>
 
                     {/* Validation Error */}
                     <p>
@@ -59,17 +67,21 @@ export const Register = () => {
                 </div>
 
                 {/* Repeat Password */}
-                <div>
-                    <label htmlFor="rePass">Repeat password:</label>
+                <div className={style.inputGroup}>
                     <input
                         type="password"
                         id="rePass"
                         name="rePass"
-                        placeholder="Test"
+                        className={
+                            formValues.rePass.length > 0
+                                ? `${style.active}`
+                                : ''
+                        }
                         value={formValues.rePass}
                         onChange={formValueChangeHandler}
                         onBlur={validateForm}
                     />
+                    <label htmlFor="rePass">Repeat password:</label>
 
                     {/* Validation Error */}
                     <p>
@@ -79,8 +91,15 @@ export const Register = () => {
 
                 {/* Submit Button */}
                 <div className={style.btnHolder}>
-                    <input type="submit" name='submit' value="Register" disabled={disabled} />
-                    <Link to='/'>Cancel</Link>
+                    <input
+                        type="submit"
+                        name='submit'
+                        className={style.basicBtn}
+                        value="Sign Up"
+                        disabled={disabled}
+                    />
+
+                    <Link className={style.basicBtn} to='/'>Cancel</Link>
                 </div>
 
                 <span>Already have an account? </span>
