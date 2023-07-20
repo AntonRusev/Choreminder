@@ -46,7 +46,7 @@
         border-color: map-get($colors, "transparent");
         height: 2rem;
         width: 15rem;
-        padding: $base-padding / 2;
+        padding: calc($base-padding / 2);
 
         &:focus{
             outline: none;
