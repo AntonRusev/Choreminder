@@ -16,13 +16,13 @@ const ChoreList = () => {
     return (
         <>
             <section>
-                {displayedChores
+                {displayedChores.length > 1
                     ?
                     <ul className={style.list}>
                         {displayedChores.map((chore: any, index: number) => <ChoreItem key={index} {...chore} />)}
                     </ul>
                     :
-                    <p>
+                    <p className={style.empty}>
                         No chores.
                     </p>
                 }

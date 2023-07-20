@@ -1,0 +1,9 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.about {
+    @include flexCenterContainer(map-get($colors, "transparent"));
+    flex-direction: column;
+    gap: calc($base-gap * 4);
+    min-height: 70vh;
+}

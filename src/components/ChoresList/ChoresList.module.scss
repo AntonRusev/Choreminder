@@ -1,6 +1,12 @@
 @import '../../scss/variables.scss';
 @import '../../scss/mixins.scss';
 
-.list {
+.list{
+    margin: $base-margin * 3;
+}
+
+.empty {
+    @include flexCenterContainer;
+    font-size: calc($base-font-size * 2);
     margin: $base-margin * 3;
 }

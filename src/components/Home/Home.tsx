@@ -1,5 +1,4 @@
 import { memo, useContext } from "react";
-import { Link } from "react-router-dom";
 
 import { AuthContext } from '../../contexts/AuthContext';
 
@@ -10,6 +9,7 @@ import Paginator from "../Paginator/Paginator";
 import SortChores from "../SortChores/SortChores";
 
 import style from './Home.module.scss';
+import { GuestScreen } from "../GuestScreen/GuestScreen";
 
 const Home = () => {
     const { auth } = useContext(AuthContext);
@@ -28,10 +28,7 @@ const Home = () => {
                     <Paginator />
                 </section>
                 :
-                <div>
-                    <li><Link to='/login'>LOGIN</Link></li>
-                    <li><Link to='/register'>REGISTER</Link></li>
-                </div>
+                <GuestScreen />
             }
 
         </main>

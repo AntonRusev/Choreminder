@@ -1,17 +1,18 @@
-import { Routes, Route } from 'react-router-dom';
-
-import { Header } from './components/Header/Header';
-import Home from './components/Home/Home';
-import { Footer } from './components/Footer/Footer';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthContext';
 import { ChoreProvider } from './contexts/ChoreContext';
 
-import './App.scss';
+import { Header } from './components/Header/Header';
+import Home from './components/Home/Home';
+import { Footer } from './components/Footer/Footer';
 import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
 import { Logout } from './components/Logout/Logout';
 import { ConfirmProvider } from './contexts/ConfirmContext';
+import { About } from './components/About/About';
+
+import './App.scss';
 
 function App() {
     return (
@@ -22,9 +23,11 @@ function App() {
                         <Header />
                         <Routes>
                             <Route path='/' element={<Home />} />
+                            <Route path='/about' element={<About />} />
                             <Route path='/login' element={<Login />} />
                             <Route path='/register' element={<Register />} />
                             <Route path='/logout' element={<Logout />} />
+                            <Route path='*' element={<Navigate to="/" replace />} />
                         </Routes>
                         <Footer />
                     </ConfirmProvider>

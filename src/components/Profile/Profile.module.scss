@@ -1,0 +1,25 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.profile {
+    .trigger {
+        color: (map-get($colors, "secondary"));
+        cursor: pointer;
+
+        &:hover {
+            color: (map-get($colors, "white"));
+        }
+    }
+
+    .profileOptions {
+        position: absolute;
+        z-index: 1;
+        font-family: 'Yatra One', cursive;
+        font-size: calc($base-font-size * 1.5);
+        
+        p {
+            padding: calc($base-padding / 2) 0;
+            color: (map-get($colors, "white"));
+        };
+    }
+}
