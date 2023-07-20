@@ -32,7 +32,7 @@
 
         &:hover,
         &:active {
-            color:map-get($colors, "secondary");
+            color: map-get($colors, "secondary");
         }
     }
 
@@ -48,7 +48,7 @@
         width: 15rem;
         padding: calc($base-padding / 2);
 
-        &:focus{
+        &:focus {
             outline: none;
         }
     }

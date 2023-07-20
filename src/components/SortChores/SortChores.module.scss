@@ -44,15 +44,12 @@
                 margin: 0;
                 padding: calc($base-padding / 3) ($base-padding);
                 cursor: pointer;
-                
+
                 &:hover,
                 &:active {
-                    color:map-get($colors, "secondary");
+                    color: map-get($colors, "secondary");
                 }
             }
         }
     }
 }
-
-
-

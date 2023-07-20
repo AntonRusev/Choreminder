@@ -1,11 +1,12 @@
 import { memo, useContext, useState } from "react";
 
 import { ConfirmContext } from "../../contexts/ConfirmContext";
-
 import { useProgress } from "../../hooks/useProgress";
 
-import style from './ChoreItem.module.scss';
 import { dayAndHour } from "../../utils/dayAndHourExtractor";
+import { daysCalculator } from "../../utils/daysCalculator";
+
+import style from './ChoreItem.module.scss';
 
 const ChoreItem = ({
     _id,
@@ -32,6 +33,7 @@ const ChoreItem = ({
 
     const start = dayAndHour(startDate);
     const end = dayAndHour(endDate);
+    const timeRemaining = daysCalculator(hoursRemaining);
 
     const toggleSelected = () => {
         setIsSelected(!isSelected);
@@ -44,14 +46,11 @@ const ChoreItem = ({
                     {/* EXTRA INFO ON CLICK */}
                     {isSelected
                         ? <article>
-                            {/* <p>ID: {_id}</p> */}
                             <p><span>Chore:</span> {name}</p>
                             <p><span>Repeat Time:</span> {days} days</p>
                             <p><span>Timer started:</span> {start}</p>
                             <p><span>Chore due:</span> {end}</p>
-                            <p><span>Hours Remaining:</span> {hoursRemaining} </p>
-                            {/* <p>Progress: {progress?.toFixed(2)} </p>
-                            <p>Active: {isActive} </p> */}
+                            <p><span>Time Remaining:</span> {timeRemaining}</p>
                         </article>
                         :
                         <div className={style.textProgress}>
@@ -77,7 +76,7 @@ const ChoreItem = ({
 
                         {isSelected
                             ?
-                            <div className={style.btnHolder}>
+                            <div className={style.btnHolder} onClick={(e) => e.stopPropagation()}>
                                 {/* Reset Button */}
                                 <div
                                     onClick={() => onActivateConfirm({ action: "reset", _id, name, days, isActive })}
@@ -113,7 +112,7 @@ const ChoreItem = ({
                             </div>
                             :
                             <div className={style.textProgress}>
-                                <p>Remaining: <span>{hoursRemaining}</span> hours</p>
+                                <p>Remaining: <span>{timeRemaining}</span></p>
                             </div>
                         }
                     </div>

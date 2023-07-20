@@ -15,8 +15,11 @@ export const GuestScreen = () => {
             <p>
                 If you don't have an account yet, you can <Link to='/register'>Sign up</Link> here.
             </p>
+            <p>
+                If you'd like to learn more, visit <Link to='/about'>About</Link> page.
+            </p>
 
-            <p className={style.hint}>
+            <div className={style.hint}>
                 <h3>HINT:</h3>
                 <p>
                     If you want to see some prepopulated chores, you can use one of the following accounts:
@@ -40,7 +43,7 @@ export const GuestScreen = () => {
                     </div>
                 </div>
 
-            </p>
+            </div>
         </div>
     );
 };
