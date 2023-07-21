@@ -7,6 +7,7 @@
     flex-direction: column;
     gap: calc($base-gap * 4);
     min-height: 70vh;
+    padding-top: calc($base-padding * 1.5);
 
     h2 {
         font-size: calc($base-font-size * 1.6);

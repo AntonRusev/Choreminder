@@ -18,6 +18,7 @@
 
         .list {
             display: flex;
+            flex-direction: column;
             justify-content: space-evenly;
             align-items: center;
             font-family: 'Kablammo', cursive;
@@ -29,6 +30,7 @@
 
             a:hover {
                 color: (map-get($colors, "white"));
+                transition: all 0.5s;
             }
         }
     }

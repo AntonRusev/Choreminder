@@ -3,4 +3,8 @@
 
 .login {
     @include basicForm;
+
+    form {
+        width: 60%;
+    }
 }

@@ -6,16 +6,18 @@
     flex-direction: column;
     flex-wrap: wrap;
     width: 100%;
+    min-height: 100vh;
 
     .holder {
-        width: 80%;
+        width: 86%;
     }
 
     .sorting {
         @include flexCenterContainer(map-get($colors, "transparent"));
+        align-items: flex-end;
         justify-content: space-between;
         gap: $base-gap;
-        padding: $base-padding;
-        margin: $base-margin;
+        padding: $base-padding 0;
+        margin: $base-margin 0;
     }
 }

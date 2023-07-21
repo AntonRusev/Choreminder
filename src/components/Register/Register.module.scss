@@ -3,4 +3,8 @@
 
 .register {
     @include basicForm;
+
+    form {
+        width: 60%;
+    }
 }

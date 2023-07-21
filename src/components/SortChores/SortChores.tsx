@@ -1,5 +1,7 @@
 import { memo, useContext, useState } from "react";
 
+import { useClickOutside } from "../../hooks/useClickOutside";
+
 import { ChoreContext } from "../../contexts/ChoreContext";
 import { dateSort, daysSort } from "../../utils/sorters";
 
@@ -14,6 +16,11 @@ const SortChores = () => {
     const toggleSort = () => {
         setShowSortOptions(!showSortOptions);
     };
+
+    // Close on click outside the menu
+    const domNode = useClickOutside(() => {
+        setShowSortOptions(false);
+    });
 
     // Sorting the existing chores
     const sortChores = (order: string, sortBy: string) => {
@@ -45,37 +52,27 @@ const SortChores = () => {
     };
 
     return (
-        <div className={`${style.sort}`}>
+        <div ref={domNode} className={`${style.sort}`}>
+            <div
+                onClick={() => toggleSort()}
+                className={style.crudBtn}
+            >
+                <span className={style.tooltip}>Sort by...</span>
+                <span>
+                    <i className="fa-solid fa-sort"></i>
+                </span>
+            </div>
 
             {showSortOptions
                 ?
-                <div className={`${style.sortTwo}`}>
-                    <div
-                        onClick={() => toggleSort()}
-                        className={style.crudBtn}
-                    >
-                        <span className={style.tooltip}>Close</span>
-                        <span>
-                            <i className="fa-regular fa-circle-xmark"></i>
-                        </span>
-                    </div>
-                    <div className={`${style.sortingOptions}`}>
-                        <button onClick={() => sortChores(sortOrder, 'name')}>Sort by Name</button>
-                        <button onClick={() => sortChores(sortOrder, 'days')}>Sort by Days</button>
-                        <button onClick={() => sortChores(sortOrder, 'startDate')}>Sort by start of timer</button>
-                        <button onClick={() => sortChores(sortOrder, 'endDate')}>Sort by remaining hours</button>
-                    </div>
+                <div className={`${style.sortingOptions}`}>
+                    <button onClick={() => sortChores(sortOrder, 'name')}>Sort by name</button>
+                    <button onClick={() => sortChores(sortOrder, 'days')}>Sort by days</button>
+                    <button onClick={() => sortChores(sortOrder, 'startDate')}>Sort by start of timer</button>
+                    <button onClick={() => sortChores(sortOrder, 'endDate')}>Sort by remaining time</button>
                 </div>
                 :
-                <div
-                    onClick={() => toggleSort()}
-                    className={style.crudBtn}
-                >
-                    <span className={style.tooltip}>Sort by...</span>
-                    <span>
-                        <i className="fa-solid fa-sort"></i>
-                    </span>
-                </div>
+                ''
             }
 
         </div >

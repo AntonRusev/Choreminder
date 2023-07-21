@@ -2,9 +2,10 @@
 @import '../../scss/mixins.scss';
 
 .sort {
-    @include crudButton(map-get($colors, "primary"));
+    @include crudButton(map-get($colors, "secondary"));
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: end;
 
     .crudBtn {
@@ -17,38 +18,31 @@
         top: -60px;
     }
 
-    .sortTwo {
-        // FIX MARGIN TOP
-        margin-top: -25px;
+    .sortingOptions {
         display: flex;
         flex-direction: column;
+        justify-content: flex-end;
         align-items: end;
+        margin-top: calc($base-margin * 1.5);
         position: absolute;
         z-index: 1;
-        width: 50rem;
+        width: 20rem;
 
-        .sortingOptions {
-            display: flex;
-            flex-direction: column;
-            align-items: end;
-            gap: 1px;
+        button {
+            @include flexCenterContainer(map-get($colors, "primary"));
+            border-color: map-get($colors, "transparent");
+            border-radius: $base-border-radius * 2;
+            color: map-get($colors, "white");
+            font-family: 'Yatra One', cursive;
+            font-size: calc($base-font-size * 1.1);
+            letter-spacing: 2px;
+            margin: 0;
+            padding: calc($base-padding / 3) ($base-padding);
+            cursor: pointer;
 
-            button {
-                @include flexCenterContainer(map-get($colors, "primary"));
-                border-color: map-get($colors, "transparent");
-                border-radius: $base-border-radius * 2;
-                color: map-get($colors, "white");
-                font-family: 'Yatra One', cursive;
-                font-size: calc($base-font-size * 1.3);
-                letter-spacing: 2px;
-                margin: 0;
-                padding: calc($base-padding / 3) ($base-padding);
-                cursor: pointer;
-
-                &:hover,
-                &:active {
-                    color: map-get($colors, "secondary");
-                }
+            &:hover,
+            &:active {
+                color: map-get($colors, "secondary");
             }
         }
     }

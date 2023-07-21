@@ -1,5 +1,7 @@
 import { memo, useContext, useEffect, useState } from "react";
 
+import { useClickOutside } from "../../hooks/useClickOutside";
+
 import { ChoreContext } from "../../contexts/ChoreContext";
 
 import style from './Search.module.scss';
@@ -20,6 +22,11 @@ const Search = () => {
     const toggleSearch = () => {
         setShowSearchbar(!showSearchbar);
     };
+
+    // Close on click outside the menu
+    const domNode = useClickOutside(() => {
+        setShowSearchbar(false);
+    });
 
     // On entering search param
     const onSearchInput = (e: any) => {
@@ -45,26 +52,25 @@ const Search = () => {
     };
 
     return (
-        <div className={style.search}>
+        <div ref={domNode} className={style.search}>
+            <div
+                onClick={() => toggleSearch()}
+                className={style.crudBtn}
+            >
+                <span className={style.tooltip}>Search</span>
+                <span>
+                    <i className="fa-solid fa-magnifying-glass"></i>
+                </span>
+            </div>
 
             {showSearchbar
                 ?
                 <div>
-                    <div
-                        onClick={() => toggleSearch()}
-                        className={style.crudBtn}
-                    >
-                        <span className={style.tooltip}>Close</span>
-                        <span>
-                            <i className="fa-regular fa-circle-xmark"></i>
-                        </span>
-                    </div>
-
                     <form className={style.searchForm} action="post">
                         <input
                             type="text"
                             className={style.searchbar}
-                            placeholder="Search by chore name"
+                            placeholder="Enter name..."
                             value={searchPhrase}
                             onChange={onSearchInput}
                         />
@@ -78,15 +84,7 @@ const Search = () => {
                     </form>
                 </div>
                 :
-                <div
-                    onClick={() => toggleSearch()}
-                    className={style.crudBtn}
-                >
-                    <span className={style.tooltip}>Search</span>
-                    <span>
-                        <i className="fa-solid fa-magnifying-glass"></i>
-                    </span>
-                </div>
+                ''
             }
 
         </div>

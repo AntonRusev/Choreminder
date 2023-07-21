@@ -5,6 +5,7 @@
     @include flexCenterContainer(map-get($colors, "transparent"));
     flex-direction: column;
     gap: calc($base-gap * 4);
+    width: 90%;
     font-size: calc($base-font-size * 1.4);
     min-height: 70vh;
 
@@ -22,14 +23,15 @@
         @include flexCenterContainer(map-get($colors, "transparent"));
         flex-direction: column;
         gap: calc($base-gap * 4);
+        width: 90%;
         padding: calc($base-padding);
-        backdrop-filter: blur(15px);
         border-radius: $base-border-radius;
         border: 1px solid rgba(255, 255, 255, .25);
         box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
 
         .prepopulated {
             @include flexCenterContainer(map-get($colors, "transparent"));
+            flex-direction: column;
             gap: calc($base-gap * 5);
 
             span {

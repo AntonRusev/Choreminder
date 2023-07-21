@@ -13,12 +13,11 @@
     margin: $base-margin 0;
     padding: $base-padding 0;
     color: map-get($colors, "black");
-    backdrop-filter: blur(15px);
+    // backdrop-filter: blur(15px);
     border-radius: $base-border-radius;
     border: 1px solid rgba(255, 255, 255, .25);
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
     cursor: pointer;
-
 
     article {
         padding: $base-padding;
@@ -60,14 +59,14 @@
         }
 
         progress::-webkit-progress-value {
-            background: rgb(27,119,10);
-            background: linear-gradient(28deg, rgba(27,119,10,1) 0%, rgba(65,132,213,1) 100%); 
+            background: rgb(27, 119, 10);
+            background: linear-gradient(28deg, rgba(27, 119, 10, 1) 0%, rgba(65, 132, 213, 1) 100%);
             border-radius: $base-border-radius;
         }
 
         progress::-moz-progress-bar {
-            background: rgb(27,119,10);
-            background: linear-gradient(28deg, rgba(27,119,10,1) 0%, rgba(65,132,213,1) 100%); 
+            background: rgb(27, 119, 10);
+            background: linear-gradient(28deg, rgba(27, 119, 10, 1) 0%, rgba(65, 132, 213, 1) 100%);
             border-radius: $base-border-radius;
         }
 
@@ -79,14 +78,14 @@
         // Green color progress bar if the remaining time is less than 12 hours 
         .green {
             progress::-webkit-progress-value {
-                background: rgb(147,240,100);
-                background: linear-gradient(94deg, rgba(147,240,100,1) 0%, rgba(27,119,10,1) 100%);
+                background: rgb(147, 240, 100);
+                background: linear-gradient(94deg, rgba(147, 240, 100, 1) 0%, rgba(27, 119, 10, 1) 100%);
                 border-radius: $base-border-radius;
             }
 
             progress::-moz-progress-bar {
-                background: rgb(147,240,100);
-                background: linear-gradient(94deg, rgba(147,240,100,1) 0%, rgba(27,119,10,1) 100%);
+                background: rgb(147, 240, 100);
+                background: linear-gradient(94deg, rgba(147, 240, 100, 1) 0%, rgba(27, 119, 10, 1) 100%);
                 border-radius: $base-border-radius;
             }
         }

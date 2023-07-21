@@ -2,7 +2,7 @@
 @import '../../scss/mixins.scss';
 
 .search {
-    @include crudButton(map-get($colors, "primary"));
+    @include crudButton(map-get($colors, "secondary"));
 
     .crudBtn {
         margin: 0;
@@ -44,8 +44,8 @@
         border-top-left-radius: $base-border-radius * 2;
         border-bottom-left-radius: $base-border-radius * 2;
         border-color: map-get($colors, "transparent");
-        height: 2rem;
-        width: 15rem;
+        height: 1.2rem;
+        width: 9rem;
         padding: calc($base-padding / 2);
 
         &:focus {
