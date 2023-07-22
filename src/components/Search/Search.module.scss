@@ -1,5 +1,6 @@
 @import '../../scss/variables.scss';
 @import '../../scss/mixins.scss';
+@import '../../scss/breakpoints.scss';
 
 .search {
     @include crudButton(map-get($colors, "secondary"));
@@ -46,10 +47,21 @@
         border-color: map-get($colors, "transparent");
         height: 1.2rem;
         width: 9rem;
+        max-width: 25rem;
         padding: calc($base-padding / 2);
 
         &:focus {
             outline: none;
         }
+
+        // Responsive Design Styles
+        @include sm {
+            width: 100%;
+        }
+    }
+
+    // Responsive Design Styles
+    @include sm {
+        width: 80%;
     }
 }

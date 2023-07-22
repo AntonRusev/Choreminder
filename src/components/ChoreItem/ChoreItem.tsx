@@ -42,7 +42,7 @@ const ChoreItem = ({
     return (
         <li onClick={() => toggleSelected()} className={style.chore}>
             {isActive === true
-                ? <div>
+                ? <div className={style.parent}>
                     {/* EXTRA INFO ON CLICK */}
                     {isSelected
                         ? <article className={style.infoLong}>
@@ -61,13 +61,15 @@ const ChoreItem = ({
                     {/* BASIC INFO */}
                     <div className={style.progressbar}>
                         <div
-                            className={+hoursRemaining <= 48
-                                ? `${style.green}`
-                                : +hoursRemaining >= 168
-                                    ? `${style.blue}`
-                                    : ``
-                            }
-
+                            className={`
+                                ${style.progressColor} 
+                                ${+hoursRemaining <= 48
+                                    ? `${style.green}`
+                                    : +hoursRemaining >= 168
+                                        ? `${style.blue}`
+                                        : ``
+                                }
+                            `}
                         >
                             <progress id="chore" value={hoursRemaining} max={days * 24}></progress>
                         </div>
@@ -132,7 +134,7 @@ const ChoreItem = ({
                     </div>
                 </>
             }
-        </li>
+        </li >
     );
 };
 

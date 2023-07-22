@@ -155,6 +155,7 @@
     padding-top: calc($base-padding / 2);
     position: relative;
     margin-bottom: $base-margin;
+    max-width: 25rem;
 
     input {
       width: 100%;

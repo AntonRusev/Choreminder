@@ -1,13 +1,17 @@
 @import '../../scss/variables.scss';
 @import '../../scss/mixins.scss';
 
-.list{
-    margin: calc($base-margin * 3) 0;
-    min-height: 100vh
-}
+section {
+    max-width: 60rem;
 
-.empty {
-    @include flexCenterContainer;
-    font-size: calc($base-font-size * 2);
-    margin: $base-margin * 3;
+    .list {
+        margin: calc($base-margin * 3) 0;
+        // min-height: 100vh
+    }
+
+    .empty {
+        @include flexCenterContainer;
+        font-size: calc($base-font-size * 2);
+        margin: $base-margin * 3;
+    }
 }

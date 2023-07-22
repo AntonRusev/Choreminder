@@ -25,6 +25,7 @@
         .infoLongRow {
             @include flexCenterContainer(map-get($colors, "transparent"));
             flex-direction: column;
+            gap: calc($base-gap);
             text-align: center;
             padding: calc($base-padding / 4);
             font-size: calc($base-font-size * 1.2);
@@ -34,6 +35,11 @@
                 font-weight: bold
             }
         }
+    }
+
+    .parent {
+        width: 100%;
+        max-width: 50rem;
     }
 
     .progressbar {
@@ -48,7 +54,7 @@
             border-radius: $base-border-radius;
             border: 1px solid map-get($colors, "transparent");
             margin: calc($base-margin / 2) 0;
-            // width: 100%;
+            width: 100%;
             height: 42px;
             box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
         }
@@ -76,8 +82,14 @@
             border-radius: $base-border-radius;
         }
 
+        .progressColor {
+            width: 90%;
+        }
+
         // Green color progress bar if the remaining time is less than 12 hours 
         .green {
+            width: 90%;
+
             progress::-webkit-progress-value {
                 background: rgb(147, 240, 100);
                 background: linear-gradient(94deg, rgba(147, 240, 100, 1) 0%, rgba(27, 119, 10, 1) 100%);
@@ -93,6 +105,8 @@
 
         // Blue color progress bar if the remaining time is more than 168 hours 
         .blue {
+            width: 90%;
+
             progress::-webkit-progress-value {
                 background: rgb(91, 195, 222);
                 background: linear-gradient(94deg, rgba(91, 195, 222, 1) 0%, rgba(48, 51, 215, 1) 90%);

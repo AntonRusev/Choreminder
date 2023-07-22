@@ -1,5 +1,6 @@
 @import '../../scss/variables.scss';
 @import '../../scss/mixins.scss';
+@import '../../scss/breakpoints.scss';
 
 .header {
     @include flexCenterContainer(map-get($colors, "transparent"));
@@ -31,6 +32,11 @@
             a:hover {
                 color: (map-get($colors, "white"));
                 transition: all 0.5s;
+            }
+
+            // Responsive Design Styles
+            @include sm {
+                flex-direction: row;
             }
         }
     }

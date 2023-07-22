@@ -17,8 +17,10 @@
     .info {
         @include flexCenterContainer(map-get($colors, "transparent"));
         flex-direction: column;
+        text-align: center;
         gap: calc($base-gap * 2);
         font-size: calc($base-font-size * 1.3);
         padding: $base-padding;
+        max-width: 55rem;
     }
 }
