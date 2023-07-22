@@ -1,7 +1,8 @@
 import { memo, useContext, useEffect, useState } from "react";
 
 import { useClickOutside } from "../../hooks/useClickOutside";
-
+import * as choreService from '../../services/choreService';
+import { AuthContext } from "../../contexts/AuthContext";
 import { ChoreContext } from "../../contexts/ChoreContext";
 
 import style from './Search.module.scss';
@@ -10,13 +11,30 @@ const Search = () => {
     const [searchPhrase, setSearchPhrase] = useState('');
     const [showSearchbar, setShowSearchbar] = useState(false);
 
-    const { displayChores, chores } = useContext(ChoreContext);
+    const { chores, setChores } = useContext(ChoreContext);
+    const { auth } = useContext(AuthContext);
 
     useEffect(() => {
         if (chores.length > 1) {
             searchChores(searchPhrase);
         }
-    }, [searchPhrase, chores]);
+    }, [searchPhrase]);
+
+    useEffect(() => {
+        if (searchPhrase === '') {
+            resetSearch();
+        }
+    }, [searchPhrase]);
+
+    
+
+    const resetSearch = () => {
+        choreService.getAll(auth._id)
+            .then(result => {
+                setChores([...result]);
+            })
+            .catch(error => console.log(error));
+    };
 
     // Toggle the searchbar
     const toggleSearch = () => {
@@ -40,8 +58,7 @@ const Search = () => {
                 .toLowerCase()
                 .includes(searchPhrase.toLowerCase())
         });
-
-        displayChores(matched);
+        setChores(matched);
     };
 
     // Clearing the search param
@@ -49,6 +66,7 @@ const Search = () => {
         e.preventDefault();
 
         setSearchPhrase('');
+        resetSearch();
     };
 
     return (

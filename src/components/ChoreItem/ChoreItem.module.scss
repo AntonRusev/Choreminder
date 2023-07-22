@@ -66,14 +66,14 @@
         }
 
         progress::-webkit-progress-value {
-            background: rgb(27, 119, 10);
-            background: linear-gradient(28deg, rgba(27, 119, 10, 1) 0%, rgba(65, 132, 213, 1) 100%);
+            background: rgb(27,119,10);
+            background: linear-gradient(28deg, rgba(27,119,10,1) 0%, rgba(233,255,250,0.4962185557816877) 50%, rgba(65,132,213,1) 100%); 
             border-radius: $base-border-radius;
         }
 
         progress::-moz-progress-bar {
-            background: rgb(27, 119, 10);
-            background: linear-gradient(28deg, rgba(27, 119, 10, 1) 0%, rgba(65, 132, 213, 1) 100%);
+            background: rgb(27,119,10);
+            background: linear-gradient(28deg, rgba(27,119,10,1) 0%, rgba(233,255,250,0.4962185557816877) 50%, rgba(65,132,213,1) 100%); 
             border-radius: $base-border-radius;
         }
 
