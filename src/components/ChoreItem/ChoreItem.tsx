@@ -45,12 +45,12 @@ const ChoreItem = ({
                 ? <div>
                     {/* EXTRA INFO ON CLICK */}
                     {isSelected
-                        ? <article>
-                            <p><span>Chore:</span> {name}</p>
-                            <p><span>Repeat Time:</span> {days} days</p>
-                            <p><span>Timer started:</span> {start}</p>
-                            <p><span>Chore due:</span> {end}</p>
-                            <p><span>Time Remaining:</span> {timeRemaining}</p>
+                        ? <article className={style.infoLong}>
+                            <p className={style.infoLongRow}><span>Chore:</span> {name}</p>
+                            <p className={style.infoLongRow}><span>Repeat Time:</span> {days} days</p>
+                            <p className={style.infoLongRow}><span>Timer started:</span> {start}</p>
+                            <p className={style.infoLongRow}><span>Chore due:</span> {end}</p>
+                            <p className={style.infoLongRow}><span>Time Remaining:</span> {timeRemaining}</p>
                         </article>
                         :
                         <div className={style.textProgress}>
@@ -65,7 +65,7 @@ const ChoreItem = ({
                                 ? `${style.green}`
                                 : +hoursRemaining >= 168
                                     ? `${style.blue}`
-                                    : ''
+                                    : ``
                             }
 
                         >

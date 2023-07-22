@@ -9,20 +9,23 @@
     flex-direction: column;
     gap: $base-gap;
     width: 100%;
-    min-width: 40rem;
     margin: $base-margin 0;
     padding: $base-padding 0;
     color: map-get($colors, "black");
-    // backdrop-filter: blur(15px);
     border-radius: $base-border-radius;
     border: 1px solid rgba(255, 255, 255, .25);
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
     cursor: pointer;
 
-    article {
+    .infoLong {
+        @include flexCenterContainer(map-get($colors, "transparent"));
+        flex-direction: column;
         padding: $base-padding;
 
-        p {
+        .infoLongRow {
+            @include flexCenterContainer(map-get($colors, "transparent"));
+            flex-direction: column;
+            text-align: center;
             padding: calc($base-padding / 4);
             font-size: calc($base-font-size * 1.2);
 
@@ -38,22 +41,20 @@
         flex-direction: column;
         gap: $base-gap;
         width: 100%;
-        min-width: 30rem;
 
         progress {
             transform: rotate(180deg);
             background-color: map-get($colors, "gray");
             border-radius: $base-border-radius;
             border: 1px solid map-get($colors, "transparent");
-            margin: calc($base-margin / 2);
-            width: 80%;
-            min-width: 20rem;
+            margin: calc($base-margin / 2) 0;
+            // width: 100%;
             height: 42px;
             box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
         }
 
         progress::-webkit-progress-bar {
-            background-color: white;
+            background-color: transparent;
             border-radius: $base-border-radius;
 
         }
@@ -127,6 +128,7 @@
 
     .inactive {
         font-size: calc($base-font-size * 1.3);
+        text-align: center;
 
         span {
             color: map-get($colors, "secondary");

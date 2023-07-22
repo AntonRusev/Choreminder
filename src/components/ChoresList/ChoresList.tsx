@@ -9,14 +9,14 @@ import { Confirm } from '../Confirm/Confirm';
 import style from './ChoresList.module.scss';
 
 const ChoreList = () => {
-    const { displayedChores } = useContext(ChoreContext);
+    const { displayedChores, chores } = useContext(ChoreContext);
     const { isConfirmActive } = useContext(ConfirmContext);
 
     // TODO Fix the key!! 
     return (
         <>
             <section>
-                {displayedChores.length > 1
+                {chores.length > 0
                     ?
                     <ul className={style.list}>
                         {displayedChores.map((chore: any, index: number) => <ChoreItem key={index} {...chore} />)}
