@@ -32,7 +32,6 @@ const Home = () => {
                 // Guest
                 <GuestScreen />
             }
-
         </main>
     );
 };

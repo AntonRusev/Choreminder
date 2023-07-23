@@ -36,6 +36,7 @@
         @include basicButton;
         @include btnHolder;
         flex-direction: column;
+        gap: calc($base-gap* 4);
         font-size: calc($base-font-size * 2);
         text-align: center;
         width: 70%;
@@ -43,22 +44,5 @@
         padding: $base-padding;
         border-radius: $base-border-radius;
         background-image: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);
-
-        .important {
-            text-decoration: underline;
-            font-weight: bold;
-            color: map-get($colors, "secondary")
-        }
-
-        .btnHolder {
-            flex-direction: column;
-        }
-
-        // Responsive Design 
-        @include md {
-            .btnHolder {
-                flex-direction: row;
-            }
-        }
     }
 }

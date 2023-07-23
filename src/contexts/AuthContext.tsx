@@ -1,8 +1,8 @@
-import { createContext, useState, useEffect } from "react";
-
+import { createContext, useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import * as authService from '../services/authService';
+import { AlertContext } from "./AlertContext";
 
 export const AuthContext = createContext({} as any);
 
@@ -10,6 +10,8 @@ export const AuthProvider = ({
     children,
 }: any) => {
     const [auth, setAuth] = useState({} as any);
+
+    const { onActivateAlert } = useContext(AlertContext);
 
     const navigate = useNavigate();
 
@@ -50,6 +52,8 @@ export const AuthProvider = ({
 
             navigate('/');
         } catch (err: any) {
+            onActivateAlert([err.message]);
+
             throw new Error(err);
         };
     };

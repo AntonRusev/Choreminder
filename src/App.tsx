@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthContext';
+import { AlertProvider } from './contexts/AlertContext';
 import { ChoreProvider } from './contexts/ChoreContext';
 
 import Header from './components/Header/Header';
@@ -18,29 +19,31 @@ import './App.scss';
 function App() {
     return (
         <>
-            <AuthProvider>
-                <ChoreProvider>
-                    <ConfirmProvider>
-                        <Header />
-                        <Routes>
-                            <Route path='/' element={<Home />} />
-                            <Route path='/about' element={<About />} />
+            <AlertProvider>
+                <AuthProvider>
+                    <ChoreProvider>
+                        <ConfirmProvider>
+                            <Header />
+                            <Routes>
+                                <Route path='/' element={<Home />} />
+                                <Route path='/about' element={<About />} />
 
-                            <Route element={<UserRouteGuard />}>
-                                <Route path='/login' element={<Login />} />
-                                <Route path='/register' element={<Register />} />
-                            </Route>
+                                <Route element={<UserRouteGuard />}>
+                                    <Route path='/login' element={<Login />} />
+                                    <Route path='/register' element={<Register />} />
+                                </Route>
 
-                            <Route element={<GuestRouteGuard />}>
-                                <Route path='/logout' element={<Logout />} />
-                            </ Route>
+                                <Route element={<GuestRouteGuard />}>
+                                    <Route path='/logout' element={<Logout />} />
+                                </ Route>
 
-                            <Route path='*' element={<Navigate to="/" replace />} />
-                        </Routes>
-                        <Footer />
-                    </ConfirmProvider>
-                </ChoreProvider>
-            </AuthProvider>
+                                <Route path='*' element={<Navigate to="/" replace />} />
+                            </Routes>
+                            <Footer />
+                        </ConfirmProvider>
+                    </ChoreProvider>
+                </AuthProvider>
+            </AlertProvider>
         </>
     );
 };

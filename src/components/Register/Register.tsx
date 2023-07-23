@@ -5,9 +5,12 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { useForm } from '../../hooks/useForm';
 
 import style from './Register.module.scss';
+import { Alert } from '../Alert/Alert';
+import { AlertContext } from '../../contexts/AlertContext';
 
 export const Register = () => {
     const { onAuthSubmit } = useContext(AuthContext);
+    const { isAlertActive } = useContext(AlertContext);
 
 
     const { onSubmit, formValues, formErrors, disabled, formValueChangeHandler, validateForm } = useForm({
@@ -105,6 +108,9 @@ export const Register = () => {
                 <span>Already have an account?</span>
                 <Link to='/login'>Login</Link>
             </form>
+
+            {/* Alert Window */}
+            {isAlertActive && <Alert />}
         </main>
     );
 };
