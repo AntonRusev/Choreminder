@@ -10,17 +10,19 @@ Every user has to create his own profile for his personal chores, which allows d
 
 ## The technical side of CHOREMINDER
 
-CHOREMINDER is a single page application(SPA), it supports authentication and authorization, meaning that every single user can see only his own chores. 
+CHOREMINDER is a single page application(SPA), it supports authentication and authorization, meaning that every single user can see only his own chores.
+
+The user(s) and chore(s) data is accessed remotely by communicating with REST API. 
 
 It is being developed with React, using technologies such as Typescript and SASS, among others. 
 
 The users have all CRUD options available to operate on their chores. 
+
+The application has input validation and error handling implemented. It also has responsive design.
 
 ## Status
 
 The application is still in development.
 
 What is next in line:
-- Implementing route guarding.
-- Finishing the responsive design of the app.
 - Adding unit tests to the components. 

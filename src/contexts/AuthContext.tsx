@@ -52,6 +52,7 @@ export const AuthProvider = ({
 
             navigate('/');
         } catch (err: any) {
+            // Toggling alert window
             onActivateAlert([err.message]);
 
             throw new Error(err);
