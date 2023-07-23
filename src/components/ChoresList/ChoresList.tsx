@@ -22,6 +22,7 @@ const ChoreList = () => {
                         {displayedChores.map((chore: any, index: number) => <ChoreItem key={index} {...chore} />)}
                     </ul>
                     :
+                    // If there are no chores
                     <p className={style.empty}>
                         No chores.
                     </p>

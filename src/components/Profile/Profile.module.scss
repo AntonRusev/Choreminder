@@ -1,5 +1,6 @@
 @import '../../scss/variables.scss';
 @import '../../scss/mixins.scss';
+@import '../../scss/breakpoints.scss';
 
 .profile {
     .trigger {
@@ -17,10 +18,20 @@
         z-index: 1;
         font-family: 'Yatra One', cursive;
         font-size: calc($base-font-size * 1.5);
+        text-align: center;
         
+        // Adjusting profile dropdown for mobile users
+        margin-left: -4rem;
+
         p {
             padding: calc($base-padding / 2) 0;
             color: (map-get($colors, "white"));
-        };
+        }
+
+        // Responsive Design 
+        @include sm {
+            text-align: inherit;
+            margin-left: auto;
+        }
     }
 }

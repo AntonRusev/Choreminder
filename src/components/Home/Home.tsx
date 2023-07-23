@@ -2,6 +2,7 @@ import { memo, useContext } from "react";
 
 import { AuthContext } from '../../contexts/AuthContext';
 
+import { GuestScreen } from "../GuestScreen/GuestScreen";
 import ChoreList from "../ChoresList/ChoresList";
 import CreateChore from "../CreateChore/CreateChore";
 import Search from "../Search/Search";
@@ -9,7 +10,6 @@ import Paginator from "../Paginator/Paginator";
 import SortChores from "../SortChores/SortChores";
 
 import style from './Home.module.scss';
-import { GuestScreen } from "../GuestScreen/GuestScreen";
 
 const Home = () => {
     const { auth } = useContext(AuthContext);
@@ -18,6 +18,7 @@ const Home = () => {
         <main className={style.home}>
             {auth._id
                 ?
+                // Logged in user
                 <section className={style.holder}>
                     <div className={style.sorting}>
                         <Search />
@@ -28,6 +29,7 @@ const Home = () => {
                     <Paginator />
                 </section>
                 :
+                // Guest
                 <GuestScreen />
             }
 

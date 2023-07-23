@@ -1,3 +1,4 @@
+// Sorting by DATE
 export const dateSort = (a: any, b: any, sortBy: any, order: any) => {
     const dateA = new Date(a[sortBy]);
     const dateB = new Date(b[sortBy]);
@@ -22,6 +23,7 @@ export const dateSort = (a: any, b: any, sortBy: any, order: any) => {
     return 0;
 };
 
+// Sorting by DAY
 export const daysSort = (a: any, b: any, sortBy: any, order: any) => {
     const dayA = Number(a[sortBy]);
     const dayB = Number(b[sortBy]);

@@ -40,102 +40,102 @@
     .parent {
         width: 100%;
         max-width: 50rem;
-    }
 
-    .progressbar {
-        @include flexCenterContainer(map-get($colors, "transparent"));
-        flex-direction: column;
-        gap: $base-gap;
-        width: 100%;
-
-        progress {
-            transform: rotate(180deg);
-            background-color: map-get($colors, "gray");
-            border-radius: $base-border-radius;
-            border: 1px solid map-get($colors, "transparent");
-            margin: calc($base-margin / 2) 0;
+        .progressbar {
+            @include flexCenterContainer(map-get($colors, "transparent"));
+            flex-direction: column;
+            gap: $base-gap;
             width: 100%;
-            height: 42px;
-            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-        }
 
-        progress::-webkit-progress-bar {
-            background-color: transparent;
-            border-radius: $base-border-radius;
+            progress {
+                transform: rotate(180deg);
+                background-color: map-get($colors, "gray");
+                border-radius: $base-border-radius;
+                border: 1px solid map-get($colors, "transparent");
+                margin: calc($base-margin / 2) 0;
+                width: 100%;
+                height: 42px;
+                box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+            }
 
-        }
+            progress::-webkit-progress-bar {
+                background-color: transparent;
+                border-radius: $base-border-radius;
 
-        progress::-webkit-progress-value {
-            background: rgb(27,119,10);
-            background: linear-gradient(28deg, rgba(27,119,10,1) 0%, rgba(233,255,250,0.4962185557816877) 50%, rgba(65,132,213,1) 100%); 
-            border-radius: $base-border-radius;
-        }
-
-        progress::-moz-progress-bar {
-            background: rgb(27,119,10);
-            background: linear-gradient(28deg, rgba(27,119,10,1) 0%, rgba(233,255,250,0.4962185557816877) 50%, rgba(65,132,213,1) 100%); 
-            border-radius: $base-border-radius;
-        }
-
-        progress::-moz-progress-value {
-            background-color: white;
-            border-radius: $base-border-radius;
-        }
-
-        .progressColor {
-            width: 90%;
-        }
-
-        // Green color progress bar if the remaining time is less than 12 hours 
-        .green {
-            width: 90%;
+            }
 
             progress::-webkit-progress-value {
-                background: rgb(147, 240, 100);
-                background: linear-gradient(94deg, rgba(147, 240, 100, 1) 0%, rgba(27, 119, 10, 1) 100%);
+                background: rgb(27, 119, 10);
+                background: linear-gradient(28deg, rgba(27, 119, 10, 1) 0%, rgba(233, 255, 250, 0.4962185557816877) 50%, rgba(65, 132, 213, 1) 100%);
                 border-radius: $base-border-radius;
             }
 
             progress::-moz-progress-bar {
-                background: rgb(147, 240, 100);
-                background: linear-gradient(94deg, rgba(147, 240, 100, 1) 0%, rgba(27, 119, 10, 1) 100%);
-                border-radius: $base-border-radius;
-            }
-        }
-
-        // Blue color progress bar if the remaining time is more than 168 hours 
-        .blue {
-            width: 90%;
-
-            progress::-webkit-progress-value {
-                background: rgb(91, 195, 222);
-                background: linear-gradient(94deg, rgba(91, 195, 222, 1) 0%, rgba(48, 51, 215, 1) 90%);
+                background: rgb(27, 119, 10);
+                background: linear-gradient(28deg, rgba(27, 119, 10, 1) 0%, rgba(233, 255, 250, 0.4962185557816877) 50%, rgba(65, 132, 213, 1) 100%);
                 border-radius: $base-border-radius;
             }
 
-            progress::-moz-progress-bar {
-                background: rgb(91, 195, 222);
-                background: linear-gradient(94deg, rgba(91, 195, 222, 1) 0%, rgba(48, 51, 215, 1) 90%);
+            progress::-moz-progress-value {
+                background-color: white;
                 border-radius: $base-border-radius;
             }
+
+            .progressColor {
+                width: 90%;
+            }
+
+            // Green color progress bar if the remaining time is less than 12 hours 
+            .green {
+                width: 90%;
+
+                progress::-webkit-progress-value {
+                    background: rgb(147, 240, 100);
+                    background: linear-gradient(94deg, rgba(147, 240, 100, 1) 0%, rgba(27, 119, 10, 1) 100%);
+                    border-radius: $base-border-radius;
+                }
+
+                progress::-moz-progress-bar {
+                    background: rgb(147, 240, 100);
+                    background: linear-gradient(94deg, rgba(147, 240, 100, 1) 0%, rgba(27, 119, 10, 1) 100%);
+                    border-radius: $base-border-radius;
+                }
+            }
+
+            // Blue color progress bar if the remaining time is more than 168 hours 
+            .blue {
+                width: 90%;
+
+                progress::-webkit-progress-value {
+                    background: rgb(91, 195, 222);
+                    background: linear-gradient(94deg, rgba(91, 195, 222, 1) 0%, rgba(48, 51, 215, 1) 90%);
+                    border-radius: $base-border-radius;
+                }
+
+                progress::-moz-progress-bar {
+                    background: rgb(91, 195, 222);
+                    background: linear-gradient(94deg, rgba(91, 195, 222, 1) 0%, rgba(48, 51, 215, 1) 90%);
+                    border-radius: $base-border-radius;
+                }
+            }
         }
-    }
 
-    .textProgress {
-        text-align: center;
+        .textProgress {
+            text-align: center;
 
-        label {
-            font-size: calc($base-font-size * 1.4);
-            color: map-get($colors, "primary-dark");
-            font-weight: bold;
-        }
+            label {
+                font-size: calc($base-font-size * 1.4);
+                color: map-get($colors, "primary-dark");
+                font-weight: bold;
+            }
 
-        p {
-            font-size: calc($base-font-size * 1.2);
-            color: map-get($colors, "black");
+            p {
+                font-size: calc($base-font-size * 1.2);
+                color: map-get($colors, "black");
 
-            span {
-                color: map-get($colors, "secondary");
+                span {
+                    color: map-get($colors, "secondary");
+                }
             }
         }
     }

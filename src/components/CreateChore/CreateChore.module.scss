@@ -2,7 +2,6 @@
 @import '../../scss/mixins.scss';
 
 .create {
-    // @include flexCenterContainer;
     @include basicForm;
     @include crudButton(map-get($colors, "primary-dark"));
     min-height: auto;

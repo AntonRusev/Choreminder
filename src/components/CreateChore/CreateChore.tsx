@@ -98,6 +98,7 @@ const CreateChore = () => {
                         </div>
                     </form>
                     :
+                    // Toggle button for Create form
                     <div
                         onClick={() => toggleCreate()}
                         className={style.crudBtn}

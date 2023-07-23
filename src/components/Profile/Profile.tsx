@@ -11,7 +11,6 @@ export const Profile = () => {
 
     const { auth } = useContext(AuthContext);
 
-
     // Toggle the profile menu
     const toggleProfile = () => {
         setShowProfile(!showProfile);

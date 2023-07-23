@@ -67,12 +67,12 @@ export const Login = () => {
 
                 {/* Submit Button */}
                 <div className={style.btnHolder}>
-                    <input 
-                    type="submit" 
-                    name='submit' 
-                    className={style.basicBtn}
-                    value="Login" 
-                    disabled={disabled} 
+                    <input
+                        type="submit"
+                        name='submit'
+                        className={style.basicBtn}
+                        value="Login"
+                        disabled={disabled}
                     />
 
                     <Link className={style.basicBtn} to='/'>Cancel</Link>

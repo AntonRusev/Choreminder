@@ -42,7 +42,6 @@ export const GuestScreen = () => {
                         </p>
                     </div>
                 </div>
-
             </div>
         </div>
     );

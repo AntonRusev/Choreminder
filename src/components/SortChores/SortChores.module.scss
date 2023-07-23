@@ -11,11 +11,11 @@
     .crudBtn {
         margin: 0;
         padding: 0;
-    }
 
-    // Adjusting tooltip of the Add button
-    .crudBtn:hover .tooltip {
-        top: -60px;
+        // Adjusting tooltip of the Add button
+        &:hover .tooltip {
+            top: -60px;
+        }
     }
 
     .sortingOptions {
@@ -29,7 +29,7 @@
         width: 20rem;
 
         button {
-            @include flexCenterContainer(map-get($colors, "primary"));
+            @include flexCenterContainer(map-get($colors, "secondary"));
             border-color: map-get($colors, "transparent");
             border-radius: $base-border-radius * 2;
             color: map-get($colors, "white");
@@ -42,7 +42,7 @@
 
             &:hover,
             &:active {
-                color: map-get($colors, "secondary");
+                color: map-get($colors, "primary");
             }
         }
     }

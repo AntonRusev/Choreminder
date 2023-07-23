@@ -26,8 +26,8 @@ const Search = () => {
         }
     }, [searchPhrase]);
 
-    
 
+    // Fetching the most recent
     const resetSearch = () => {
         choreService.getAll(auth._id)
             .then(result => {
@@ -71,6 +71,8 @@ const Search = () => {
 
     return (
         <div ref={domNode} className={style.search}>
+
+            {/* Toggle search button */}
             <div
                 onClick={() => toggleSearch()}
                 className={style.crudBtn}
@@ -93,6 +95,7 @@ const Search = () => {
                             onChange={onSearchInput}
                         />
 
+                        {/* Clear Input field button */}
                         <button
                             className={style.searchBtn}
                             onClick={clear}

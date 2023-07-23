@@ -23,27 +23,3 @@ $base-border-radius: 20px;
 
 //font 
 $base-font-size: 1rem;
-
-// @import "./variables.scss";
-
-// .test {
-//     @include flexCenterContainer(green);
-
-//     p {
-//         color: map-get($colors, "primary");
-//         &:hover {
-//         color: map-get($colors, "secondary");
-//         }
-//         &:last-child {
-//         color: white;
-//         }
-//         &:nth-child(2) {
-//         color: black;
-//         }
-//     }
-// }
-
-// .test2 {
-//     @extend .test;
-//     padding: $base-padding;
-// }

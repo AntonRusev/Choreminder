@@ -55,7 +55,6 @@ export const ChoreProvider = ({
     const onChoreCreate = async (e: any, formValues: any) => {
         e.preventDefault();
 
-        // Generate start and end date of the chore;
         const { startDate, endDate } = dateGenerator(formValues.days);
 
         const isActive: boolean = true;

@@ -8,6 +8,11 @@
     flex-direction: column;
     margin: $base-margin;
 
+    h1 {
+        font-family: 'Kablammo', cursive;
+        font-size: calc($base-font-size * 3);
+    }
+
     a {
         text-decoration: none;
         color: map-get($colors, "secondary");
@@ -34,15 +39,10 @@
                 transition: all 0.5s;
             }
 
-            // Responsive Design Styles
+            // Responsive Design 
             @include sm {
                 flex-direction: row;
             }
         }
-    }
-
-    h1 {
-        font-family: 'Kablammo', cursive;
-        font-size: calc($base-font-size * 3);
     }
 }

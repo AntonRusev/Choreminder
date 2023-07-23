@@ -35,6 +35,7 @@ const ChoreItem = ({
     const end = dayAndHour(endDate);
     const timeRemaining = daysCalculator(hoursRemaining);
 
+    // Toggle more info for chore
     const toggleSelected = () => {
         setIsSelected(!isSelected);
     };
@@ -75,7 +76,6 @@ const ChoreItem = ({
                         </div>
 
                         {/* EXTRA INFO ON CLICK */}
-
                         {isSelected
                             ?
                             <div className={style.btnHolder} onClick={(e) => e.stopPropagation()}>
@@ -121,6 +121,7 @@ const ChoreItem = ({
                 </div>
                 :
                 <>
+                    {/* If chore is inactive */}
                     <p className={style.inactive}>The <span>{name}</span> chore is not active.</p>
                     {/* Activate Button */}
                     <div

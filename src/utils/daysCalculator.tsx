@@ -1,3 +1,5 @@
+// Constructing a string with Days and Hours left
+
 export const daysCalculator = (hoursRemaining: any) => {
     const days = Math.floor(hoursRemaining / 24);
     const hours = hoursRemaining % 24;

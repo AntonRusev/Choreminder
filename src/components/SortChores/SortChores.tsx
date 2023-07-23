@@ -17,7 +17,7 @@ const SortChores = () => {
         setShowSortOptions(!showSortOptions);
     };
 
-    // Close on click outside the menu
+    // Close dropdown on click outside the menu
     const domNode = useClickOutside(() => {
         setShowSortOptions(false);
     });
@@ -53,6 +53,8 @@ const SortChores = () => {
 
     return (
         <div ref={domNode} className={`${style.sort}`}>
+
+            {/* Toggle button for sort options menu */}
             <div
                 onClick={() => toggleSort()}
                 className={style.crudBtn}

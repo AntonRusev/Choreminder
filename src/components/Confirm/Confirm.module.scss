@@ -1,6 +1,8 @@
 @import '../../scss/variables.scss';
 @import '../../scss/mixins.scss';
+@import '../../scss/breakpoints.scss';
 
+// Background taking the entire screen
 .overlay {
     @include flexCenterContainer(rgba(0, 0, 0, 0.2));
     position: fixed;
@@ -28,21 +30,35 @@
         }
     }
 
+    // Confirm window
     .confirm {
         @include flexCenterContainer(map-get($colors, "transparent"));
         @include basicButton;
         @include btnHolder;
         flex-direction: column;
         font-size: $base-font-size * 2;
+        text-align: center;
+        width: 70%;
+        max-width: 60rem;
         padding: $base-padding;
-        // border: 1px solid map-get($colors, "primary-dark");
         border-radius: $base-border-radius;
         background-image: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);
 
-        .important{
+        .important {
             text-decoration: underline;
             font-weight: bold;
             color: map-get($colors, "secondary")
+        }
+
+        .btnHolder {
+            flex-direction: column;
+        }
+
+        // Responsive Design 
+        @include md {
+            .btnHolder {
+                flex-direction: row;
+            }
         }
     }
 }
