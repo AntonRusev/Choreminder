@@ -109,6 +109,5 @@ describe('Testing the Header Component', () => {
 
         const currentUrlPath = global.window.location.pathname;
         expect(currentUrlPath).toContain(`/`);
-        console.log(currentUrlPath)
     });
 });

@@ -9,7 +9,7 @@ import { Alert } from './Alert';
 import { AlertContext } from '../../contexts/AlertContext';
 
 describe('Testing the Alert Component', () => {
-    test('show heading', () => {
+    test('show alert message', () => {
         const alertData = ['custom message'];
         render(
             <BrowserRouter>
