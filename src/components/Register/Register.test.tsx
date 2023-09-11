@@ -6,33 +6,33 @@ import userEvent from "@testing-library/user-event";
 
 import { AuthProvider } from '../../contexts/AuthContext';
 
-import { Login } from './Login';
+import { Register } from './Register';
 
-describe('Testing the Login Component', () => {
-    test('show Login button and Cancel + Sign Up links', () => {
+describe('Testing the Register Component', () => {
+    test('show Sign Up button and Cancel + Login links', () => {
         render(
             <BrowserRouter>
                 <AuthProvider>
-                    <Login />
+                    <Register />
                 </AuthProvider>
             </BrowserRouter>
         );
 
-        const loginBtn = screen.getByRole("button", { name: /login/i });
-        expect(loginBtn).toBeInTheDocument();
+        const signUpBtn = screen.getByRole("button", { name: /sign/i });
+        expect(signUpBtn).toBeInTheDocument();
 
         const cancelLink = screen.getByText(/cancel/i);
         expect(cancelLink).toBeInTheDocument();
 
-        const signUpLink = screen.getByText(/sign/i);
-        expect(signUpLink).toBeInTheDocument();
+        const loginLink = screen.getByText(/login/i);
+        expect(loginLink).toBeInTheDocument();
     });
 
     test('Cancel link works', async () => {
         render(
             <BrowserRouter>
                 <AuthProvider>
-                    <Login />
+                    <Register />
                 </AuthProvider>
             </BrowserRouter>
         );
@@ -44,52 +44,55 @@ describe('Testing the Login Component', () => {
         expect(currentUrlPath).toContain(`/`);
     });
 
-    test('Sign Up link works', async () => {
+    test('Login link works', async () => {
         render(
             <BrowserRouter>
                 <AuthProvider>
-                    <Login />
+                    <Register />
                 </AuthProvider>
             </BrowserRouter>
         );
 
-        const signUpLink = await screen.findByText(/sign/i);
-        fireEvent.click(signUpLink);
+        const loginLink = await screen.findByText(/login/i);
+        fireEvent.click(loginLink);
 
         const currentUrlPath = global.window.location.pathname;
-        expect(currentUrlPath).toContain(`/register`);
+        expect(currentUrlPath).toContain(`/login`);
     });
 
-    test('Login button is disabled', async () => {
+    test('Sign Up button is disabled', async () => {
         render(
             <BrowserRouter>
                 <AuthProvider>
-                    <Login />
+                    <Register />
                 </AuthProvider>
             </BrowserRouter>
         );
 
-        const loginBtn = await screen.findByText(/login/i);
-        expect(loginBtn).toBeDisabled();
+        const signUpBtn = await screen.findByText(/sign/i);
+        expect(signUpBtn).toBeDisabled();
     });
 
     test('component has proper input fields', () => {
         render(
             <BrowserRouter>
                 <AuthProvider>
-                    <Login />
+                    <Register />
                 </AuthProvider>
             </BrowserRouter>
         );
 
         const emailInput = screen.getByRole("textbox");
-        const passwordInput = screen.getByLabelText(/Password/i);
+        const [passwordInput, rePassInput] = screen.getAllByLabelText(/Password/i);
 
         expect(emailInput).toBeInTheDocument();
         expect(emailInput).toHaveAttribute("name", "email");
 
         expect(passwordInput).toBeInTheDocument();
         expect(passwordInput).toHaveAttribute("name", "password");
+
+        expect(rePassInput).toBeInTheDocument();
+        expect(rePassInput).toHaveAttribute("name", "rePass");
     });
 
     test('input fields accept data', async () => {
@@ -98,18 +101,21 @@ describe('Testing the Login Component', () => {
         render(
             <BrowserRouter>
                 <AuthProvider>
-                    <Login />
+                    <Register />
                 </AuthProvider>
             </BrowserRouter>
         );
 
         const emailInput = screen.getByRole("textbox");
-        const passwordInput = screen.getByLabelText(/Password/i);
+        const [passwordInput, rePassInput] = screen.getAllByLabelText(/Password/i);
 
         await user.type(emailInput, "test@mail.com");
         expect(emailInput).toHaveValue("test@mail.com");
 
         await user.type(passwordInput, "user's password");
         expect(passwordInput).toHaveValue("user's password");
+
+        await user.type(rePassInput, "repeat password");
+        expect(rePassInput).toHaveValue("repeat password");
     });
 });
