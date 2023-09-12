@@ -9,7 +9,7 @@ import { ChoreContext } from '../../contexts/ChoreContext';
 import ChoresList from './ChoresList';
 
 describe('Testing the ChoresList Component', () => {
-    test('doesn\'t show "No Chores" message if chores are provided', async () => {
+    test('doesn\'t show "No Chores" message if chores are provided', () => {
         const chores = ['chores'];
         const displayedChores = ['chore'];
 
@@ -26,7 +26,7 @@ describe('Testing the ChoresList Component', () => {
         expect(screen.queryByText(/no chores/i)).toBeNull();
     });
 
-    test('renders proper list of chores', async () => {
+    test('renders proper list of chores', () => {
         const chores = ['chores'];
         const displayedChores = ['chore', 'two', 'three'];
 
@@ -44,7 +44,7 @@ describe('Testing the ChoresList Component', () => {
         expect(choreItems.length).toBe(3);
     });
 
-    test('shows "No Chores" message if no chores are provided', async () => {
+    test('shows "No Chores" message if no chores are provided', () => {
         const chores = [] as any;
 
         render(
