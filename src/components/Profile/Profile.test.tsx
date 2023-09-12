@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { describe, test, expect, vi } from 'vitest';
+import { describe, test, expect } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { BrowserRouter } from "react-router-dom";
 
